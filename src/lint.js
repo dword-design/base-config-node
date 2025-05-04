@@ -5,6 +5,6 @@ export default function () {
   ) {
     throw new Error(
       'Please add jiti to your project since cjsFallback is activated.',
-    )
+    );
   }
 }

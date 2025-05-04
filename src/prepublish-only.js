@@ -1,21 +1,22 @@
-import { endent, property } from '@dword-design/functions'
-import deleteEmpty from 'delete-empty'
-import { execa } from 'execa'
-import fs from 'fs-extra'
-import micromatch from 'micromatch'
-import { createRequire } from 'module'
-import P from 'path'
+import { endent, property } from '@dword-design/functions';
+import deleteEmpty from 'delete-empty';
+import { execa } from 'execa';
+import fs from 'fs-extra';
+import micromatch from 'micromatch';
+import { createRequire } from 'module';
+import P from 'path';
 
-const _require = createRequire(import.meta.url)
+const _require = createRequire(import.meta.url);
 
 export default async function (options) {
   options = {
     log: process.env.NODE_ENV !== 'test',
     resolvePluginsRelativeTo: _require.resolve('@dword-design/eslint-config'),
     ...options,
-  }
+  };
 
-  const output = { all: '' }
+  const output = { all: '' };
+
   try {
     output.all +=
       execa(
@@ -33,11 +34,13 @@ export default async function (options) {
         options.log ? { stdio: 'inherit' } : { all: true },
       )
       |> await
-      |> property('all')
+      |> property('all');
   } catch (error) {
-    throw new Error(error.all)
+    throw new Error(error.all);
   }
-  await fs.remove('dist')
+
+  await fs.remove('dist');
+
   // https://github.com/babel/babel/issues/11394
   await fs.copy('src', 'dist', {
     filter: path =>
@@ -46,8 +49,10 @@ export default async function (options) {
         '**/__snapshots__',
         '**/__image_snapshots__',
       ]),
-  })
-  await deleteEmpty(P.resolve('dist'))
+  });
+
+  await deleteEmpty(P.resolve('dist'));
+
   if (this.config.cjsFallback) {
     await fs.outputFile(
       P.join('dist', 'cjs-fallback.cjs'),
@@ -57,8 +62,9 @@ export default async function (options) {
 
         module.exports = api
       `,
-    )
+    );
   }
+
   output.all +=
     execa(
       'babel',
@@ -66,7 +72,7 @@ export default async function (options) {
       options.log ? { stdio: 'inherit' } : { all: true },
     )
     |> await
-    |> property('all')
+    |> property('all');
 
-  return output
+  return output;
 }
