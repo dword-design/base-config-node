@@ -104,15 +104,14 @@ export default tester(
         await globby('*', { cwd: 'dist', dot: true, onlyFiles: false }),
       ).toEqual(['test.txt']);
     },
-    snapshots: async () => {
+    'snapshots mocha': async () => {
       await outputFiles({
         'dist/foo.js': '',
         src: {
-          foo: {
-            '__image_snapshots__/foo-snap.png': '',
-            '__snapshots__/foo.js.snap': '',
-          },
+          '__image_snapshots__/foo-snap.png': '',
+          '__snapshots__/foo.js.snap': '',
           'index.js': 'export default 1',
+          'index.js-snapshots/valid-1.txt': '',
         },
       });
 
@@ -121,8 +120,53 @@ export default tester(
       await base.run('prepublishOnly');
 
       expect(
-        await globby('**', { cwd: 'dist', dot: true, onlyFiles: false }),
-      ).toEqual(['index.js']);
+        new Set(
+          await globby('**', { cwd: 'dist', dot: true, onlyFiles: false }),
+        ),
+      ).toEqual(
+        new Set(
+          Object.keys({
+            'index.js': true,
+            'index.js-snapshots': true,
+            'index.js-snapshots/valid-1.txt': true,
+          }),
+        ),
+      );
+    },
+    'snapshots playwright': async () => {
+      await outputFiles({
+        'dist/foo.js': '',
+        src: {
+          '__image_snapshots__/foo-snap.png': '',
+          '__snapshots__/foo.js.snap': '',
+          'index.js': 'export default 1',
+          'index.js-snapshots/valid-1.txt': '',
+        },
+      });
+
+      const base = new Base({
+        name: '../src/index.js',
+        testRunner: 'playwright',
+      });
+
+      await base.prepare();
+      await base.run('prepublishOnly');
+
+      expect(
+        new Set(
+          await globby('**', { cwd: 'dist', dot: true, onlyFiles: false }),
+        ),
+      ).toEqual(
+        new Set(
+          Object.keys({
+            __image_snapshots__: true,
+            '__image_snapshots__/foo-snap.png': true,
+            __snapshots__: true,
+            '__snapshots__/foo.js.snap': true,
+            'index.js': true,
+          }),
+        ),
+      );
     },
     async valid() {
       await outputFiles({
