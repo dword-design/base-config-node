@@ -46,8 +46,9 @@ export default async function (options) {
     filter: path =>
       !micromatch.isMatch(path, [
         '**/*.js',
-        '**/__snapshots__',
-        '**/__image_snapshots__',
+        ...(this.config.testRunner === 'playwright'
+          ? ['**/*-snapshots']
+          : ['**/__snapshots__', '**/__image_snapshots__']),
       ]),
   });
 
