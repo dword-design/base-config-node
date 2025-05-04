@@ -1,16 +1,16 @@
-import { keys, omit, property } from '@dword-design/functions'
-import fs from 'fs-extra'
-import P from 'path'
+import { keys, omit, property } from '@dword-design/functions';
+import fs from 'fs-extra';
+import P from 'path';
 
 export default (config = {}) => {
   if (!fs.existsSync(P.join('src', 'index.js'))) {
-    return {}
+    return {};
   }
 
   const packageConfig = {
     type: 'module',
     ...(fs.existsSync('package.json') ? fs.readJsonSync('package.json') : {}),
-  }
+  };
 
   return {
     main: `dist/${config.cjsFallback ? 'cjs-fallback.cjs' : 'index.js'}`,
@@ -23,5 +23,5 @@ export default (config = {}) => {
             ? { ...packageConfig.exports, '.': './dist/index.js' }
             : './dist/index.js',
       }),
-  }
-}
+  };
+};

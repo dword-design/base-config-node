@@ -37,4 +37,4 @@ export default {
       await watcher.close()
     }
   }), */
-}
+};

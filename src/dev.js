@@ -1,16 +1,16 @@
-import chokidar from 'chokidar'
-import debounce from 'debounce'
+import chokidar from 'chokidar';
+import debounce from 'debounce';
 
-import prepublishOnly from './prepublish-only.js'
+import prepublishOnly from './prepublish-only.js';
 
 export default options =>
   chokidar.watch('src').on(
     'all',
     debounce(async () => {
       try {
-        await prepublishOnly(options)
+        await prepublishOnly(options);
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
     }, 200),
-  )
+  );
