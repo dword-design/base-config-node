@@ -137,6 +137,9 @@ export default tester(
     async valid() {
       await outputFiles({
         'dist/foo.js': '',
+        'package.json': JSON.stringify({
+          devDependencies: { '@playwright/test': '*' },
+        }),
         src: {
           'index.js': 'export default 1 |> x => x * 2',
           'index.spec.js': endent`
@@ -146,7 +149,6 @@ export default tester(
           `,
           'test.txt': 'foo',
         },
-        'package.json': JSON.stringify({ devDependencies: { '@playwright/test': '*' } }),
       });
 
       const base = new Base({ name: '../src/index.js' });
