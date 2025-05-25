@@ -33,34 +33,6 @@ export default tester(
       await base.run('prepublishOnly');
       expect((await execaCommand('node cjs-file.cjs')).stdout).toEqual('foo');
     },
-    'eslint plugin next to eslint config': async () => {
-      await outputFiles({
-        node_modules: {
-          '@dword-design/eslint-config': {
-            'index.js': endent`
-              module.exports = {
-                plugins: ['foo'],
-              }
-
-            `,
-            'node_modules/eslint-plugin-foo/index.js': '',
-          },
-          'eslint-plugin-foo/index.js': 'foo bar',
-        },
-        'src/index.js': '',
-      });
-
-      const base = new Base({ name: '../src/index.js' });
-      await base.prepare();
-
-      await base.run('prepublishOnly', {
-        resolvePluginsRelativeTo: P.join(
-          'node_modules',
-          '@dword-design',
-          'eslint-config',
-        ),
-      });
-    },
     'eslint-config project': async () => {
       await outputFiles({
         'package.json': JSON.stringify({

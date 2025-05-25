@@ -3,34 +3,17 @@ import deleteEmpty from 'delete-empty';
 import { execa } from 'execa';
 import fs from 'fs-extra';
 import micromatch from 'micromatch';
-import { createRequire } from 'module';
 import P from 'path';
 
-const _require = createRequire(import.meta.url);
-
 export default async function (options) {
-  options = {
-    log: process.env.NODE_ENV !== 'test',
-    resolvePluginsRelativeTo: _require.resolve('@dword-design/eslint-config'),
-    ...options,
-  };
-
+  options = { log: process.env.NODE_ENV !== 'test', ...options };
   const output = { all: '' };
 
   try {
     output.all +=
       execa(
         'eslint',
-        [
-          '--fix',
-          '--ext',
-          '.js,.json',
-          '--ignore-path',
-          '.gitignore',
-          '--resolve-plugins-relative-to',
-          options.resolvePluginsRelativeTo,
-          '.',
-        ],
+        ['--fix', '--ext', '.js,.json', '.'],
         options.log ? { stdio: 'inherit' } : { all: true },
       )
       |> await
