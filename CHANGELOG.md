@@ -1,3 +1,13 @@
+## [3.0.4](https://github.com/dword-design/base-config-node/compare/v3.0.3...v3.0.4) (2025-05-25)
+
+
+### Bug Fixes
+
+* foo ([3482bfa](https://github.com/dword-design/base-config-node/commit/3482bfa3249de2735705db5bfbb7f0a8855b7d0f))
+* update dependency @dword-design/base to v12 ([edd4d66](https://github.com/dword-design/base-config-node/commit/edd4d669e8989fd88c591d221a1f8a58c4abca47))
+* update dependency @dword-design/base to v12 ([#247](https://github.com/dword-design/base-config-node/issues/247)) ([6a16c49](https://github.com/dword-design/base-config-node/commit/6a16c4910de67b52172238cda6ece34862faf9d5))
+* upgrades ([5244018](https://github.com/dword-design/base-config-node/commit/524401867181d0587a6819a31e2b8185fcc7e089))
+
 ## [3.0.3](https://github.com/dword-design/base-config-node/compare/v3.0.2...v3.0.3) (2025-05-25)
 
 
