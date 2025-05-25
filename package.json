@@ -26,7 +26,7 @@
     "@babel/core": "^7.27.1",
     "@dword-design/depcheck-parser-sass": "^4.0.4",
     "@dword-design/functions": "^6.0.2",
-    "chokidar": "^3.6.0",
+    "chokidar": "^4.0.0",
     "debounce": "^2.2.0",
     "delete-empty": "^3.0.0",
     "eslint": "^9.27.0",
