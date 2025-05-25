@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/dword-design/base-config-node/compare/v3.0.2...v3.0.3) (2025-05-25)
+
+
+### Bug Fixes
+
+* prep for eslint 9 ([ee6dae0](https://github.com/dword-design/base-config-node/commit/ee6dae08b8f4eaf6348059587ccda31d1cec1c69))
+
 ## [3.0.2](https://github.com/dword-design/base-config-node/compare/v3.0.1...v3.0.2) (2025-05-04)
 
 
