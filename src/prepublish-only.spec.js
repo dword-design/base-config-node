@@ -146,6 +146,7 @@ export default tester(
           `,
           'test.txt': 'foo',
         },
+        'package.json': JSON.stringify({ devDependencies: { '@playwright/test': '*' } }),
       });
 
       const base = new Base({ name: '../src/index.js' });
