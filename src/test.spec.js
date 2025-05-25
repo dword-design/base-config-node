@@ -1,25 +1,27 @@
-import { Base } from '@dword-design/base';
 import { endent } from '@dword-design/functions';
 import tester from '@dword-design/tester';
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';
-import outputFiles from 'output-files';
 import { execaCommand } from 'execa';
+import outputFiles from 'output-files';
 
 export default tester(
   {
     'jiti cjsFallback': async () => {
       await outputFiles({
+        '.baserc.json': JSON.stringify({
+          cjsFallback: true,
+          name: '../src/index.js',
+        }),
         'package.json': JSON.stringify({ dependencies: { jiti: '*' } }),
-        '.baserc.json': JSON.stringify({ name: '../src/index.js', cjsFallback: true }),
       });
 
-      await execaCommand('base prepare')
-      await execaCommand('base test')
+      await execaCommand('base prepare');
+      await execaCommand('base test');
     },
     'jiti without cjsFallback': async () => {
       await outputFiles({
-        'package.json': JSON.stringify({ dependencies: { jiti: '*' } }),
         '.baserc.json': JSON.stringify('../src/index.js'),
+        'package.json': JSON.stringify({ dependencies: { jiti: '*' } }),
       });
 
       await execaCommand('base prepare');
