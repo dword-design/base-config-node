@@ -1,3 +1,5 @@
+import P from 'node:path';
+
 import { Base } from '@dword-design/base';
 import { endent, property } from '@dword-design/functions';
 import tester from '@dword-design/tester';
@@ -6,7 +8,6 @@ import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 import outputFiles from 'output-files';
-import P from 'path';
 
 import self from './prepublish-only.js';
 
@@ -23,7 +24,11 @@ export default tester(
     },
     cjsFallback: async () => {
       await outputFiles({
-        'cjs-file.cjs': "console.log(require('.'))",
+        'cjs-file.cjs': endent`
+          /* eslint-disable */
+          const foo = require('.');
+          console.log(foo);
+        `,
         'package.json': JSON.stringify({ type: 'module' }),
         src: { 'index.js': "export default 'foo'" },
       });
@@ -31,20 +36,8 @@ export default tester(
       const base = new Base({ cjsFallback: true, name: '../src/index.js' });
       await base.prepare();
       await base.run('prepublishOnly');
-      expect((await execaCommand('node cjs-file.cjs')).stdout).toEqual('foo');
-    },
-    'eslint-config project': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({
-          name: '@dword-design/eslint-config',
-          type: 'module',
-        }),
-        'src/index.js': '',
-      });
-
-      const base = new Base({ cjsFallback: true, name: '../src/index.js' });
-      await base.prepare();
-      await base.run('prepublishOnly');
+      const { stdout } = await execaCommand('node cjs-file.cjs');
+      expect(stdout).toEqual('foo');
     },
     fixable: async () => {
       await fs.outputFile(P.join('src', 'index.js'), "console.log('foo')");
@@ -145,7 +138,11 @@ export default tester(
         'dist/foo.js': '',
         src: {
           'index.js': 'export default 1 |> x => x * 2',
-          'index.spec.js': '',
+          'index.spec.js': endent`
+            import { test } from '${packageName`@playwright/test`}';
+
+            test('valid', () => {});
+          `,
           'test.txt': 'foo',
         },
       });

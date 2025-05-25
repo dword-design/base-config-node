@@ -1,9 +1,10 @@
+import P from 'node:path';
+
 import { endent, property } from '@dword-design/functions';
 import deleteEmpty from 'delete-empty';
 import { execa } from 'execa';
 import fs from 'fs-extra';
 import micromatch from 'micromatch';
-import P from 'path';
 
 export default async function (options) {
   options = { log: process.env.NODE_ENV !== 'test', ...options };
@@ -13,7 +14,7 @@ export default async function (options) {
     output.all +=
       execa(
         'eslint',
-        ['--fix', '--ext', '.js,.json', '.'],
+        ['--fix', '.'],
         options.log ? { stdio: 'inherit' } : { all: true },
       )
       |> await

@@ -2,30 +2,29 @@ import { Base } from '@dword-design/base';
 import { endent } from '@dword-design/functions';
 import tester from '@dword-design/tester';
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';
-import fs from 'fs-extra';
+import outputFiles from 'output-files';
+import { execaCommand } from 'execa';
 
 export default tester(
   {
     'jiti cjsFallback': async () => {
-      await fs.outputFile(
-        'package.json',
-        JSON.stringify({ dependencies: { jiti: '*' } }),
-      );
+      await outputFiles({
+        'package.json': JSON.stringify({ dependencies: { jiti: '*' } }),
+        '.baserc.json': JSON.stringify({ name: '../src/index.js', cjsFallback: true }),
+      });
 
-      const base = new Base({ cjsFallback: true, name: '../src/index.js' });
-      await base.prepare();
-      await base.test();
+      await execaCommand('base prepare')
+      await execaCommand('base test')
     },
     'jiti without cjsFallback': async () => {
-      await fs.outputFile(
-        'package.json',
-        JSON.stringify({ dependencies: { jiti: '*' } }),
-      );
+      await outputFiles({
+        'package.json': JSON.stringify({ dependencies: { jiti: '*' } }),
+        '.baserc.json': JSON.stringify('../src/index.js'),
+      });
 
-      const base = new Base({ name: '../src/index.js' });
-      await base.prepare();
+      await execaCommand('base prepare');
 
-      await expect(base.test()).rejects.toThrow(endent`
+      await expect(execaCommand('base test')).rejects.toThrow(endent`
         Unused dependencies
         * jiti
       `);

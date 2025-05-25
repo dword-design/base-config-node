@@ -1,6 +1,7 @@
+import P from 'node:path';
+
 import { keys, omit, property } from '@dword-design/functions';
 import fs from 'fs-extra';
-import P from 'path';
 
 export default (config = {}) => {
   if (!fs.existsSync(P.join('src', 'index.js'))) {
