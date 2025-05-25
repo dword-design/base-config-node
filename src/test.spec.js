@@ -1,4 +1,3 @@
-import { Base } from '@dword-design/base';
 import { endent } from '@dword-design/functions';
 import tester from '@dword-design/tester';
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';

@@ -8,6 +8,7 @@ import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 import outputFiles from 'output-files';
+import packageName from 'depcheck-package-name';
 
 import self from './prepublish-only.js';
 
