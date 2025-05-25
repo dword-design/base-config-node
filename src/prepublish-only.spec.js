@@ -4,11 +4,11 @@ import { Base } from '@dword-design/base';
 import { endent, property } from '@dword-design/functions';
 import tester from '@dword-design/tester';
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';
+import packageName from 'depcheck-package-name';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 import outputFiles from 'output-files';
-import packageName from 'depcheck-package-name';
 
 import self from './prepublish-only.js';
 
