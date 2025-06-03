@@ -1,63 +1,51 @@
-import P from 'node:path';
+import pathLib from 'node:path';
 
-import { endent, property } from '@dword-design/functions';
 import deleteEmpty from 'delete-empty';
-import { execa } from 'execa';
+import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import micromatch from 'micromatch';
 
 export default async function (options) {
-  options = { log: process.env.NODE_ENV !== 'test', ...options };
-  const output = { all: '' };
+  options = {
+    log: process.env.NODE_ENV !== 'test',
+    stderr: 'inherit',
+    ...options,
+  };
 
-  try {
-    output.all +=
-      execa(
-        'eslint',
-        ['--fix', '.'],
-        options.log ? { stdio: 'inherit' } : { all: true },
-      )
-      |> await
-      |> property('all');
-  } catch (error) {
-    throw new Error(error.all);
-  }
+  await execaCommand('eslint --fix .', {
+    ...(options.log && { stdout: 'inherit' }),
+    cwd: this.cwd,
+    stderr: options.stderr,
+  });
 
-  await fs.remove('dist');
+  await fs.remove(pathLib.join(this.cwd, 'dist'));
 
-  // https://github.com/babel/babel/issues/11394
-  await fs.copy('src', 'dist', {
+  await fs.copy(pathLib.join(this.cwd, 'src'), pathLib.join(this.cwd, 'dist'), {
     filter: path =>
       !micromatch.isMatch(path, [
-        '**/*.js',
+        '**/*.ts',
         ...(this.config.testRunner === 'playwright'
           ? ['**/*-snapshots']
           : ['**/__snapshots__', '**/__image_snapshots__']),
       ]),
   });
 
-  await deleteEmpty(P.resolve('dist'));
+  await deleteEmpty(pathLib.join(this.cwd, 'dist'));
 
-  if (this.config.cjsFallback) {
-    await fs.outputFile(
-      P.join('dist', 'cjs-fallback.cjs'),
-      endent`
-        const jiti = require('jiti')(__filename, { interopDefault: true })
-        const api = jiti('.')
+  const hasFiles = await execaCommand('tsc --listFilesOnly', { cwd: this.cwd })
+    .then(() => true)
+    .catch(() => false);
 
-        module.exports = api
-      `,
-    );
+  let result;
+
+  if (hasFiles) {
+    result = await execaCommand('tsc --rootDir src --outDir dist', {
+      ...(options.log && { stdout: 'inherit' }),
+      cwd: this.cwd,
+      stderr: options.stderr,
+    });
   }
 
-  output.all +=
-    execa(
-      'babel',
-      ['--out-dir', 'dist', '--ignore', '**/*.spec.js', '--verbose', 'src'],
-      options.log ? { stdio: 'inherit' } : { all: true },
-    )
-    |> await
-    |> property('all');
-
-  return output;
+  await execaCommand('tsc-alias --outDir dist --resolve-full-paths');
+  return result;
 }

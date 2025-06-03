@@ -22,23 +22,22 @@
     "test": "base test"
   },
   "dependencies": {
-    "@babel/cli": "^7.27.2",
-    "@babel/core": "^7.27.1",
     "@dword-design/depcheck-parser-sass": "^4.0.4",
-    "@dword-design/functions": "^6.0.2",
     "chokidar": "^3.6.0",
     "debounce": "^2.2.0",
     "delete-empty": "^3.0.0",
-    "eslint": "^9.27.0",
-    "execa": "^9.5.3",
+    "eslint": "^9.28.0",
+    "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
-    "micromatch": "^4.0.8"
+    "lodash-es": "^4.17.21",
+    "micromatch": "^4.0.8",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@dword-design/base": "^12.0.2",
-    "@dword-design/tester": "^2.0.19",
-    "@dword-design/tester-plugin-tmp-dir": "^2.1.26",
+    "@dword-design/base": "^12.2.1",
     "@playwright/test": "^1.52.0",
+    "dedent": "^1.6.0",
     "depcheck-package-name": "^3.0.1",
     "globby": "^14.1.0",
     "output-files": "^2.0.32"
