@@ -1,3 +1,11 @@
+## [3.0.5](https://github.com/dword-design/base-config-node/compare/v3.0.4...v3.0.5) (2025-06-03)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#249](https://github.com/dword-design/base-config-node/issues/249)) ([84e11be](https://github.com/dword-design/base-config-node/commit/84e11be18e56bad4f204d84be6d8507997d1cee5))
+* update config files ([77e839f](https://github.com/dword-design/base-config-node/commit/77e839f5daaf6088f6dab5f223d9d28d0bf1861e))
+
 ## [3.0.4](https://github.com/dword-design/base-config-node/compare/v3.0.3...v3.0.4) (2025-05-25)
 
 
