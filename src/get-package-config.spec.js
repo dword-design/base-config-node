@@ -1,100 +1,99 @@
-import tester from '@dword-design/tester';
-import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';
+import pathLib from 'node:path';
+
+import { expect, test } from '@playwright/test';
 import fs from 'fs-extra';
 import outputFiles from 'output-files';
 
 import self from './get-package-config.js';
 
-export default tester(
-  {
-    cjsFallback: async () => {
-      await fs.outputFile('src/index.js', '');
+test('empty', ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+  expect(self({ cwd })).toEqual({});
+});
 
-      expect(self({ cjsFallback: true })).toEqual({
-        main: 'dist/cjs-fallback.cjs',
-      });
-    },
-    commonjs: async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({ type: 'commonjs' }),
-        'src/index.js': '',
-      });
+test('esm', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+  await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), '');
 
-      expect(self()).toEqual({ main: 'dist/index.js' });
-    },
-    empty: () => expect(self()).toEqual({}),
-    esm: async () => {
-      await fs.outputFile('src/index.js', '');
+  expect(self({ cwd })).toEqual({
+    exports: './dist/index.js',
+    main: 'dist/index.js',
+  });
+});
 
-      expect(self()).toEqual({
-        exports: './dist/index.js',
-        main: 'dist/index.js',
-      });
-    },
-    'multiple exports': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({
-          exports: { '.': './dist/index.js', './foo': './dist/index.js' },
-        }),
-        'src/foo.js': '',
-        'src/index.js': '',
-      });
+test('multiple exports', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
 
-      expect(self()).toEqual({
-        exports: { '.': './dist/index.js', './foo': './dist/index.js' },
-        main: 'dist/index.js',
-      });
-    },
-    'outdated object export': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({
-          exports: { '.': './dist/xyz.js', './foo': './dist/foo.js' },
-        }),
-        'src/index.js': '',
-      });
+  await outputFiles(cwd, {
+    'package.json': JSON.stringify({
+      exports: { '.': './dist/index.js', './foo': './dist/index.js' },
+    }),
+    'src/foo.ts': '',
+    'src/index.ts': '',
+  });
 
-      expect(self()).toEqual({
-        exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
-        main: 'dist/index.js',
-      });
-    },
-    'outdated string export': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({ exports: './dist/foo.js' }),
-        'src/index.js': '',
-      });
+  expect(self({ cwd })).toEqual({
+    exports: { '.': './dist/index.js', './foo': './dist/index.js' },
+    main: 'dist/index.js',
+  });
+});
 
-      expect(self()).toEqual({
-        exports: './dist/index.js',
-        main: 'dist/index.js',
-      });
-    },
-    'single default export in object': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({ exports: { '.': './dist/xyz.js' } }),
-        'src/foo.js': '',
-        'src/index.js': '',
-      });
+test('outdated object export', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
 
-      expect(self()).toEqual({
-        exports: './dist/index.js',
-        main: 'dist/index.js',
-      });
-    },
-    'single non-export in object': async () => {
-      await outputFiles({
-        'package.json': JSON.stringify({
-          exports: { './foo': './dist/foo.js' },
-        }),
-        'src/foo.js': '',
-        'src/index.js': '',
-      });
+  await outputFiles(cwd, {
+    'package.json': JSON.stringify({
+      exports: { '.': './dist/xyz.js', './foo': './dist/foo.js' },
+    }),
+    'src/index.ts': '',
+  });
 
-      expect(self()).toEqual({
-        exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
-        main: 'dist/index.js',
-      });
-    },
-  },
-  [testerPluginTmpDir()],
-);
+  expect(self({ cwd })).toEqual({
+    exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
+    main: 'dist/index.js',
+  });
+});
+
+test('outdated string export', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await outputFiles(cwd, {
+    'package.json': JSON.stringify({ exports: './dist/foo.js' }),
+    'src/index.ts': '',
+  });
+
+  expect(self({ cwd })).toEqual({
+    exports: './dist/index.js',
+    main: 'dist/index.js',
+  });
+});
+
+test('single default export in object', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await outputFiles(cwd, {
+    'package.json': JSON.stringify({ exports: { '.': './dist/xyz.js' } }),
+    'src/foo.ts': '',
+    'src/index.ts': '',
+  });
+
+  expect(self({ cwd })).toEqual({
+    exports: './dist/index.js',
+    main: 'dist/index.js',
+  });
+});
+
+test('single non-export in object', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await outputFiles(cwd, {
+    'package.json': JSON.stringify({ exports: { './foo': './dist/foo.js' } }),
+    'src/foo.ts': '',
+    'src/index.ts': '',
+  });
+
+  expect(self({ cwd })).toEqual({
+    exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
+    main: 'dist/index.js',
+  });
+});

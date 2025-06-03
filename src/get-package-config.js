@@ -1,28 +1,26 @@
-import P from 'node:path';
+import pathLib from 'node:path';
 
-import { keys, omit, property } from '@dword-design/functions';
 import fs from 'fs-extra';
+import { omit } from 'lodash-es';
 
-export default (config = {}) => {
-  if (!fs.existsSync(P.join('src', 'index.js'))) {
+export default ({ cwd = '.' } = {}) => {
+  if (!fs.existsSync(pathLib.join(cwd, 'src', 'index.ts'))) {
     return {};
   }
 
   const packageConfig = {
     type: 'module',
-    ...(fs.existsSync('package.json') ? fs.readJsonSync('package.json') : {}),
+    ...(fs.existsSync(pathLib.join(cwd, 'package.json'))
+      ? fs.readJsonSync(pathLib.join(cwd, 'package.json'))
+      : {}),
   };
 
   return {
-    main: `dist/${config.cjsFallback ? 'cjs-fallback.cjs' : 'index.js'}`,
-    ...(packageConfig.type === 'module' &&
-      !config.cjsFallback && {
-        exports:
-          typeof packageConfig.exports === 'object' &&
-          (packageConfig.exports |> omit(['.']) |> keys |> property('length')) >
-            0
-            ? { ...packageConfig.exports, '.': './dist/index.js' }
-            : './dist/index.js',
-      }),
+    exports:
+      typeof packageConfig.exports === 'object' &&
+      Object.keys(omit(packageConfig.exports, ['.'])).length > 0
+        ? { ...packageConfig.exports, '.': './dist/index.js' }
+        : './dist/index.js',
+    main: 'dist/index.js',
   };
 };
