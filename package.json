@@ -35,7 +35,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@dword-design/base": "^12.2.1",
+    "@dword-design/base": "^13.0.0",
     "@playwright/test": "^1.52.0",
     "dedent": "^1.6.0",
     "depcheck-package-name": "^3.0.1",
