@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/dword-design/base-config-node/compare/v3.0.7...v3.0.8) (2025-06-05)
+
+
+### Bug Fixes
+
+* foo ([53f3585](https://github.com/dword-design/base-config-node/commit/53f358583b8c777662ef172d4ac4b2b5d11e9dc0))
+
 ## [3.0.7](https://github.com/dword-design/base-config-node/compare/v3.0.6...v3.0.7) (2025-06-05)
 
 
