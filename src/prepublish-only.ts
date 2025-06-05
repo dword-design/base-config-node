@@ -60,7 +60,7 @@ export default async function (options) {
     try {
       await execaCommand('babel dist --out-dir dist', { cwd: this.cwd });
     } finally {
-      await fs.remove(pathLib.join(this.cwd, 'babel.config.js'));
+      await fs.remove(pathLib.join(this.cwd, 'babel.config.json'));
     }
 
     return result;
