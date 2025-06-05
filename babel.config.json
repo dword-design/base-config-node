@@ -1,1 +1,13 @@
-{"plugins":[["babel-plugin-module-resolver",{"alias":{"@/src":"./dist"}}],"babel-plugin-add-import-extension"]}
+{
+  "plugins": [
+    [
+      "babel-plugin-module-resolver",
+      {
+        "alias": {
+          "@/src": "./dist"
+        }
+      }
+    ],
+    "babel-plugin-add-import-extension"
+  ]
+}
