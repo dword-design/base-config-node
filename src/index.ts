@@ -1,8 +1,8 @@
 import depcheckParserSass from '@dword-design/depcheck-parser-sass';
 
-import dev from './dev.js';
-import getPackageConfig from './get-package-config.js';
-import prepublishOnly from './prepublish-only.js';
+import dev from './dev';
+import getPackageConfig from './get-package-config';
+import prepublishOnly from './prepublish-only';
 
 export default function () {
   return {

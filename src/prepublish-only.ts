@@ -1,6 +1,7 @@
 import pathLib from 'node:path';
 
 import deleteEmpty from 'delete-empty';
+import packageName from 'depcheck-package-name';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import micromatch from 'micromatch';
@@ -36,16 +37,32 @@ export default async function (options) {
     .then(() => true)
     .catch(() => false);
 
-  let result;
-
   if (hasFiles) {
-    result = await execaCommand('tsc --rootDir src --outDir dist', {
+    const result = await execaCommand('tsc', {
       ...(options.log && { stdout: 'inherit' }),
       cwd: this.cwd,
       stderr: options.stderr,
     });
-  }
 
-  await execaCommand('tsc-alias --outDir dist --resolve-full-paths');
-  return result;
+    await fs.outputFile(
+      pathLib.join(this.cwd, 'babel.config.json'),
+      `${JSON.stringify({
+        plugins: [
+          [
+            packageName`babel-plugin-module-resolver`,
+            { alias: { '@/src': './dist' } },
+          ],
+          packageName`babel-plugin-add-import-extension`,
+        ],
+      })}\n`,
+    );
+
+    try {
+      await execaCommand('babel dist --out-dir dist', { cwd: this.cwd });
+    } finally {
+      await fs.remove(pathLib.join(this.cwd, 'babel.config.js'));
+    }
+
+    return result;
+  }
 }
