@@ -1,3 +1,12 @@
+## [3.0.7](https://github.com/dword-design/base-config-node/compare/v3.0.6...v3.0.7) (2025-06-05)
+
+
+### Bug Fixes
+
+* foo ([519b8da](https://github.com/dword-design/base-config-node/commit/519b8dab743a589616db313886727ea61e903484))
+* gitignore babel.config.json ([8c4e273](https://github.com/dword-design/base-config-node/commit/8c4e273447dc76df47e48c52d6b25fe60d52a98c))
+* gitignore babel.config.json ([8b63cc6](https://github.com/dword-design/base-config-node/commit/8b63cc6f996f2a4ecd28427acceba3d94f94d5bc))
+
 ## [3.0.6](https://github.com/dword-design/base-config-node/compare/v3.0.5...v3.0.6) (2025-06-03)
 
 
