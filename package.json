@@ -40,7 +40,6 @@
     "eslint": "^9.28.0",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
-    "lodash-es": "^4.17.21",
     "micromatch": "^4.0.8",
     "typescript": "^5.8.3"
   },

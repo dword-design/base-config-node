@@ -83,7 +83,7 @@ test('snapshots', async ({}, testInfo) => {
         onlyFiles: false,
       }),
     ),
-  ).toEqual(new Set(Object.keys({ 'index.js': true })));
+  ).toEqual(new Set(Object.keys({ 'index.d.ts': true, 'index.js': true })));
 });
 
 test('valid', async ({}, testInfo) => {
@@ -111,12 +111,18 @@ test('valid', async ({}, testInfo) => {
   expect(stdout).toEqual('');
 
   expect(
-    await globby('*', {
-      cwd: P.join(cwd, 'dist'),
-      dot: true,
-      onlyFiles: false,
-    }),
-  ).toEqual(['index.js', 'test.txt']);
+    new Set(
+      await globby('*', {
+        cwd: P.join(cwd, 'dist'),
+        dot: true,
+        onlyFiles: false,
+      }),
+    ),
+  ).toEqual(
+    new Set(
+      Object.keys({ 'index.d.ts': true, 'index.js': true, 'test.txt': true }),
+    ),
+  );
 
   expect(
     await fs.readFile(P.join(cwd, 'dist', 'index.js'), 'utf8'),

@@ -41,9 +41,6 @@ importers:
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       micromatch:
         specifier: ^4.0.8
         version: 4.0.8
