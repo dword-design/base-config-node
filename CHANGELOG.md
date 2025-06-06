@@ -1,3 +1,10 @@
+## [3.0.11](https://github.com/dword-design/base-config-node/compare/v3.0.10...v3.0.11) (2025-06-06)
+
+
+### Bug Fixes
+
+* recycle lint ([f5d74a9](https://github.com/dword-design/base-config-node/commit/f5d74a9d37fac7e59b4d1173478c91e8bb17bc14))
+
 ## [3.0.10](https://github.com/dword-design/base-config-node/compare/v3.0.9...v3.0.10) (2025-06-06)
 
 
