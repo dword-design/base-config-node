@@ -16,7 +16,11 @@ test('esm', async ({}, testInfo) => {
   await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), '');
 
   expect(self({ cwd })).toEqual({
-    exports: './dist/index.js',
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+    },
     main: 'dist/index.js',
   });
 });
@@ -33,7 +37,12 @@ test('multiple exports', async ({}, testInfo) => {
   });
 
   expect(self({ cwd })).toEqual({
-    exports: { '.': './dist/index.js', './foo': './dist/index.js' },
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+      './foo': './dist/index.js',
+    },
     main: 'dist/index.js',
   });
 });
@@ -49,7 +58,12 @@ test('outdated object export', async ({}, testInfo) => {
   });
 
   expect(self({ cwd })).toEqual({
-    exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+      './foo': './dist/foo.js',
+    },
     main: 'dist/index.js',
   });
 });
@@ -63,7 +77,11 @@ test('outdated string export', async ({}, testInfo) => {
   });
 
   expect(self({ cwd })).toEqual({
-    exports: './dist/index.js',
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+    },
     main: 'dist/index.js',
   });
 });
@@ -78,7 +96,11 @@ test('single default export in object', async ({}, testInfo) => {
   });
 
   expect(self({ cwd })).toEqual({
-    exports: './dist/index.js',
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+    },
     main: 'dist/index.js',
   });
 });
@@ -93,7 +115,12 @@ test('single non-export in object', async ({}, testInfo) => {
   });
 
   expect(self({ cwd })).toEqual({
-    exports: { '.': './dist/index.js', './foo': './dist/foo.js' },
+    exports: {
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+      './foo': './dist/foo.js',
+    },
     main: 'dist/index.js',
   });
 });

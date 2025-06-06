@@ -6,7 +6,14 @@
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -38,7 +45,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@dword-design/base": "^13.0.2",
+    "@dword-design/base": "^13.0.3",
     "@playwright/test": "^1.52.0",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "globby": "^14.1.0",

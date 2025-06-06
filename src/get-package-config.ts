@@ -1,7 +1,6 @@
 import pathLib from 'node:path';
 
 import fs from 'fs-extra';
-import { omit } from 'lodash-es';
 
 export default ({ cwd = '.' } = {}) => {
   if (!fs.existsSync(pathLib.join(cwd, 'src', 'index.ts'))) {
@@ -16,11 +15,12 @@ export default ({ cwd = '.' } = {}) => {
   };
 
   return {
-    exports:
-      typeof packageConfig.exports === 'object' &&
-      Object.keys(omit(packageConfig.exports, ['.'])).length > 0
-        ? { ...packageConfig.exports, '.': './dist/index.js' }
-        : './dist/index.js',
+    exports: {
+      ...(typeof packageConfig.exports === 'object' && packageConfig.exports),
+      '.': {
+        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+      },
+    },
     main: 'dist/index.js',
   };
 };
