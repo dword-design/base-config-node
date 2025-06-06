@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 import fs from 'fs-extra';
 import outputFiles from 'output-files';
 
-import self from './get-package-config.js';
+import self from './get-package-config';
 
 test('empty', ({}, testInfo) => {
   const cwd = testInfo.outputPath();

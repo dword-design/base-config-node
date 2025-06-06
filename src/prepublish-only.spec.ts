@@ -2,8 +2,8 @@ import P from 'node:path';
 
 import { Base } from '@dword-design/base';
 import { expect, test } from '@playwright/test';
-import dedent from 'dedent';
 import packageName from 'depcheck-package-name';
+import endent from 'endent';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 import outputFiles from 'output-files';
@@ -11,7 +11,7 @@ import outputFiles from 'output-files';
 test('build errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(P.join(cwd, 'src', 'index.ts'), 'foo bar');
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
 
   await expect(base.run('prepublishOnly')).rejects.toThrow(
@@ -22,7 +22,7 @@ test('build errors', async ({}, testInfo) => {
 test('fixable', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(P.join(cwd, 'src', 'index.ts'), "console.log('foo')");
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -34,7 +34,7 @@ test('fixable', async ({}, testInfo) => {
 test('linting errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(P.join(cwd, 'src', 'index.ts'), 'var foo = 2');
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
 
   await expect(base.run('prepublishOnly')).rejects.toThrow(
@@ -47,7 +47,7 @@ test('linting errors', async ({}, testInfo) => {
 test('only copied files', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(P.join(cwd, 'src', 'test.txt'), 'foo');
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -60,20 +60,18 @@ test('only copied files', async ({}, testInfo) => {
   ).toEqual(['test.txt']);
 });
 
-test('snapshots mocha', async ({}, testInfo) => {
+test('snapshots', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
   await outputFiles(cwd, {
     'dist/foo.js': '',
     src: {
-      '__image_snapshots__/foo-snap.png': '',
-      '__snapshots__/foo.ts.snap': '',
       'index.spec.ts-snapshots/valid-1.txt': '',
       'index.ts': 'export default 1',
     },
   });
 
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -85,57 +83,7 @@ test('snapshots mocha', async ({}, testInfo) => {
         onlyFiles: false,
       }),
     ),
-  ).toEqual(
-    new Set(
-      Object.keys({
-        'index.js': true,
-        'index.spec.ts-snapshots': true,
-        'index.spec.ts-snapshots/valid-1.txt': true,
-      }),
-    ),
-  );
-});
-
-test('snapshots playwright', async ({}, testInfo) => {
-  const cwd = testInfo.outputPath();
-
-  await outputFiles(cwd, {
-    'dist/foo.js': '',
-    src: {
-      '__image_snapshots__/foo-snap.png': '',
-      '__snapshots__/foo.ts.snap': '',
-      'index.spec.ts-snapshots/valid-1.txt': '',
-      'index.ts': 'export default 1',
-    },
-  });
-
-  const base = new Base(
-    { name: '../../src/index.js', testRunner: 'playwright' },
-    { cwd },
-  );
-
-  await base.prepare();
-  await base.run('prepublishOnly');
-
-  expect(
-    new Set(
-      await globby('**', {
-        cwd: P.join(cwd, 'dist'),
-        dot: true,
-        onlyFiles: false,
-      }),
-    ),
-  ).toEqual(
-    new Set(
-      Object.keys({
-        __image_snapshots__: true,
-        '__image_snapshots__/foo-snap.png': true,
-        __snapshots__: true,
-        '__snapshots__/foo.ts.snap': true,
-        'index.js': true,
-      }),
-    ),
-  );
+  ).toEqual(new Set(Object.keys({ 'index.js': true })));
 });
 
 test('valid', async ({}, testInfo) => {
@@ -147,7 +95,7 @@ test('valid', async ({}, testInfo) => {
       devDependencies: { '@playwright/test': '*' },
     }),
     src: {
-      'index.spec.ts': dedent`
+      'index.spec.ts': endent`
         import { test } from '${packageName`@playwright/test`}';
 
         test('valid', () => {});
@@ -157,7 +105,7 @@ test('valid', async ({}, testInfo) => {
     },
   });
 
-  const base = new Base({ name: '../../src/index.js' }, { cwd });
+  const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   const { stdout } = await base.run('prepublishOnly');
   expect(stdout).toEqual('');

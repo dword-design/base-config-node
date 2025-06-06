@@ -3,7 +3,7 @@ import pathLib from 'node:path';
 import chokidar from 'chokidar';
 import debounce from 'debounce';
 
-import prepublishOnly from './prepublish-only.js';
+import prepublishOnly from './prepublish-only';
 
 export default function (options) {
   return chokidar.watch(pathLib.join(this.cwd, 'src')).on(

@@ -4,10 +4,7 @@ import fs from 'fs-extra';
 import { omit } from 'lodash-es';
 
 export default ({ cwd = '.' } = {}) => {
-  if (
-    !fs.existsSync(pathLib.join(cwd, 'src', 'index.ts')) &&
-    !fs.existsSync(pathLib.join(cwd, 'src', 'index.js'))
-  ) {
+  if (!fs.existsSync(pathLib.join(cwd, 'src', 'index.ts'))) {
     return {};
   }
 

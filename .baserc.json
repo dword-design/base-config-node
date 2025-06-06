@@ -4,6 +4,5 @@
       "playwright"
     ]
   },
-  "name": "@dword-design/node",
-  "testRunner": "playwright"
+  "name": "@dword-design/node"
 }

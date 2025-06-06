@@ -29,6 +29,7 @@
     "chokidar": "^3.6.0",
     "debounce": "^2.2.0",
     "delete-empty": "^3.0.0",
+    "depcheck-package-name": "^3.0.1",
     "eslint": "^9.28.0",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
@@ -37,10 +38,9 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@dword-design/base": "^13.0.1",
+    "@dword-design/base": "^13.0.2",
     "@playwright/test": "^1.52.0",
-    "dedent": "^1.6.0",
-    "depcheck-package-name": "^3.0.1",
+    "endent": "npm:@dword-design/endent@^1.4.1",
     "globby": "^14.1.0",
     "output-files": "^2.0.32"
   },

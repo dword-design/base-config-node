@@ -5,6 +5,7 @@ import packageName from 'depcheck-package-name';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import micromatch from 'micromatch';
+import ts from 'typescript';
 
 export default async function (options) {
   options = {
@@ -22,22 +23,19 @@ export default async function (options) {
   await fs.remove(pathLib.join(this.cwd, 'dist'));
 
   await fs.copy(pathLib.join(this.cwd, 'src'), pathLib.join(this.cwd, 'dist'), {
-    filter: path =>
-      !micromatch.isMatch(path, [
-        '**/*.ts',
-        ...(this.config.testRunner === 'playwright'
-          ? ['**/*-snapshots']
-          : ['**/__snapshots__', '**/__image_snapshots__']),
-      ]),
+    filter: path => !micromatch.isMatch(path, ['**/*.ts', '**/*-snapshots']),
   });
 
   await deleteEmpty(pathLib.join(this.cwd, 'dist'));
 
-  const hasFiles = await execaCommand('tsc --listFilesOnly', { cwd: this.cwd })
-    .then(() => true)
-    .catch(() => false);
+  const { config } = ts.readConfigFile(
+    pathLib.join(this.cwd, 'tsconfig.json'),
+    ts.sys.readFile,
+  );
 
-  if (hasFiles) {
+  const { fileNames } = ts.parseJsonConfigFileContent(config, ts.sys, this.cwd);
+
+  if (fileNames.length > 0) {
     const result = await execaCommand('tsc', {
       ...(options.log && { stdout: 'inherit' }),
       cwd: this.cwd,
