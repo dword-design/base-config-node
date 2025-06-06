@@ -14,12 +14,7 @@ export default async function (options) {
     ...options,
   };
 
-  await execaCommand('eslint --fix .', {
-    ...(options.log && { stdout: 'inherit' }),
-    cwd: this.cwd,
-    stderr: options.stderr,
-  });
-
+  await this.lint(options);
   await fs.remove(pathLib.join(this.cwd, 'dist'));
 
   await fs.copy(pathLib.join(this.cwd, 'src'), pathLib.join(this.cwd, 'dist'), {

@@ -37,7 +37,6 @@
     "debounce": "^2.2.0",
     "delete-empty": "^3.0.0",
     "depcheck-package-name": "^3.0.1",
-    "eslint": "^9.28.0",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
     "micromatch": "^4.0.8",
