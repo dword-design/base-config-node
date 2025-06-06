@@ -1,3 +1,12 @@
+## [3.0.10](https://github.com/dword-design/base-config-node/compare/v3.0.9...v3.0.10) (2025-06-06)
+
+
+### Bug Fixes
+
+* fix tests ([2d99bce](https://github.com/dword-design/base-config-node/commit/2d99bce36a07121f967aa4f53ac57feae95b675c))
+* fix typings in package.json ([877097f](https://github.com/dword-design/base-config-node/commit/877097fa282b1a0404a91ca2f327b3c6dfc61d61))
+* update config files ([4868ff4](https://github.com/dword-design/base-config-node/commit/4868ff44a2a6809a60f09cb01fcf3cefad8d60a2))
+
 ## [3.0.9](https://github.com/dword-design/base-config-node/compare/v3.0.8...v3.0.9) (2025-06-06)
 
 
