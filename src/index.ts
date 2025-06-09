@@ -4,6 +4,8 @@ import dev from './dev';
 import getPackageConfig from './get-package-config';
 import prepublishOnly from './prepublish-only';
 
+export { getPackageConfig };
+
 export default function () {
   return {
     allowedMatches: ['src'],

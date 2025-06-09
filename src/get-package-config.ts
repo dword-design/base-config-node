@@ -2,8 +2,8 @@ import pathLib from 'node:path';
 
 import fs from 'fs-extra';
 
-export default ({ cwd = '.' } = {}) => {
-  if (!fs.existsSync(pathLib.join(cwd, 'src', 'index.ts'))) {
+export default ({ cwd = '.', mainFilename = 'index.ts' } = {}) => {
+  if (!fs.existsSync(pathLib.join(cwd, 'src', mainFilename))) {
     return {};
   }
 
