@@ -4,8 +4,6 @@ import dev from './dev';
 import getPackageConfig from './get-package-config';
 import prepublishOnly from './prepublish-only';
 
-export { getPackageConfig };
-
 export default function () {
   return {
     allowedMatches: ['src'],
@@ -18,3 +16,5 @@ export default function () {
     useJobMatrix: true,
   };
 }
+
+export { default as getPackageConfig } from './get-package-config';
