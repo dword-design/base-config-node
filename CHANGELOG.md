@@ -1,3 +1,10 @@
+## [3.0.12](https://github.com/dword-design/base-config-node/compare/v3.0.11...v3.0.12) (2025-06-09)
+
+
+### Bug Fixes
+
+* export getPackageConfig ([dbac4a1](https://github.com/dword-design/base-config-node/commit/dbac4a16b2b80a5c8b6bad5a226e452712b960fa))
+
 ## [3.0.11](https://github.com/dword-design/base-config-node/compare/v3.0.10...v3.0.11) (2025-06-06)
 
 
