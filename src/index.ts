@@ -10,7 +10,7 @@ export default function () {
     commands: { dev, prepublishOnly },
     depcheckConfig: { parsers: { '**/*.scss': depcheckParserSass } },
     editorIgnore: ['dist'],
-    gitignore: ['/dist', '/babel.config.json'],
+    gitignore: ['/dist'],
     npmPublish: true,
     packageConfig: getPackageConfig({ cwd: this.cwd }),
     useJobMatrix: true,
