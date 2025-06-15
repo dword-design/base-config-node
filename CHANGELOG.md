@@ -1,3 +1,10 @@
+## [3.0.16](https://github.com/dword-design/base-config-node/compare/v3.0.15...v3.0.16) (2025-06-15)
+
+
+### Bug Fixes
+
+* fix getPackageName ([aab6d8a](https://github.com/dword-design/base-config-node/commit/aab6d8a4e025d6d0ab82ece0649b3a84e41502e4))
+
 ## [3.0.15](https://github.com/dword-design/base-config-node/compare/v3.0.14...v3.0.15) (2025-06-15)
 
 
