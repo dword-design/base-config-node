@@ -124,3 +124,15 @@ test('single non-export in object', async ({}, testInfo) => {
     main: 'dist/index.js',
   });
 });
+
+test('mainFilename', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+  await fs.outputFile(pathLib.join(cwd, 'src', 'foo.ts'), '');
+
+  expect(self({ cwd, mainFilename: 'foo.ts' })).toEqual({
+    exports: {
+      '.': { import: { default: './dist/foo.js', types: './dist/foo.d.ts' } },
+    },
+    main: 'dist/foo.js',
+  });
+});

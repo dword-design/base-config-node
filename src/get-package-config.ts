@@ -14,13 +14,17 @@ export default ({ cwd = '.', mainFilename = 'index.ts' } = {}) => {
       : {}),
   };
 
+  const basename = pathLib.basename(mainFilename, '.ts');
   return {
     exports: {
       ...(typeof packageConfig.exports === 'object' && packageConfig.exports),
       '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
+        import: {
+          default: `./dist/${basename}.js`,
+          types: `./dist/${basename}.d.ts`,
+        },
       },
     },
-    main: 'dist/index.js',
+    main: `dist/${basename}.js`,
   };
 };
