@@ -95,7 +95,6 @@ test('alias', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
   await outputFiles(cwd, {
-    'dist/foo.js': '',
     src: { 'bar.ts': 'export default 1', 'foo/index.ts': "import '@/src/bar'" },
   });
 
