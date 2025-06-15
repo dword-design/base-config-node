@@ -35,17 +35,19 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "chokidar": "^3.6.0",
     "debounce": "^2.2.0",
-    "delete-empty": "^3.0.0",
     "depcheck-package-name": "^3.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
-    "micromatch": "^4.0.8",
-    "typescript": "^5.8.3"
+    "mkdist": "^2.3.0",
+    "typescript": "^5.8.3",
+    "vue": "^3.5.16",
+    "vue-sfc-transformer": "^0.1.16",
+    "vue-tsc": "^2.2.10"
   },
   "devDependencies": {
-    "@dword-design/base": "^13.0.3",
-    "@playwright/test": "^1.52.0",
+    "@dword-design/base": "^13.0.6",
+    "@playwright/test": "^1.53.0",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^2.0.32"
   },

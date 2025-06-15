@@ -107,6 +107,64 @@ test('alias', async ({}, testInfo) => {
   ).toEqual('import "../bar.js";');
 });
 
+test('vue', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await fs.outputFile(
+    pathLib.join(cwd, 'src', 'foo.vue'),
+    endent`
+      <template>
+        <div />
+      </template>
+
+      <script setup lang="ts">
+      defineProps({ id: { type: String } });
+      </script>
+    `,
+  );
+
+  const base = new Base({ name: '../../src' }, { cwd });
+  await base.prepare();
+  await base.run('prepublishOnly');
+  expect(await fs.exists(pathLib.join(cwd, 'dist', 'foo.vue'))).toEqual(true);
+
+  expect(await fs.exists(pathLib.join(cwd, 'dist', 'foo.vue.d.ts'))).toEqual(
+    true,
+  );
+});
+
+test('vue typescript', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await fs.outputFile(
+    pathLib.join(cwd, 'src', 'foo.vue'),
+    endent`
+      <template>
+        <div>{{ foo }}</div>
+      </template>
+
+      <script setup lang="ts">
+      const foo: string = 'bar';
+      </script>
+    `,
+  );
+
+  const base = new Base({ name: '../../src' }, { cwd });
+  await base.prepare();
+  await base.run('prepublishOnly');
+
+  expect(await fs.readFile(pathLib.join(cwd, 'dist', 'foo.vue'), 'utf8'))
+    .toEqual(endent`
+      <template>
+        <div>{{ foo }}</div>
+      </template>
+
+      <script setup>
+      const foo = "bar";
+      </script>\n
+    `);
+});
+
 test('valid', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
@@ -128,8 +186,7 @@ test('valid', async ({}, testInfo) => {
 
   const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
-  const { stdout } = await base.run('prepublishOnly');
-  expect(stdout).toEqual('');
+  await base.run('prepublishOnly');
 
   expect(
     new Set(
