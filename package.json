@@ -29,7 +29,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
     "@dword-design/depcheck-parser-sass": "^4.0.4",
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
@@ -39,6 +39,7 @@
     "depcheck-package-name": "^3.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
+    "globby": "^14.1.0",
     "micromatch": "^4.0.8",
     "typescript": "^5.8.3"
   },
@@ -46,7 +47,6 @@
     "@dword-design/base": "^13.0.3",
     "@playwright/test": "^1.52.0",
     "endent": "npm:@dword-design/endent@^1.4.1",
-    "globby": "^14.1.0",
     "output-files": "^2.0.32"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",

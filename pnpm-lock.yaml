@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@babel/cli':
-        specifier: ^7.27.2
-        version: 7.27.2(@babel/core@7.27.4)
+      '@babel/core':
+        specifier: ^7.27.4
+        version: 7.27.4
       '@dword-design/depcheck-parser-sass':
         specifier: ^4.0.4
         version: 4.0.4
@@ -38,6 +38,9 @@ importers:
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
+      globby:
+        specifier: ^14.1.0
+        version: 14.1.0
       micromatch:
         specifier: ^4.0.8
         version: 4.0.8
@@ -54,9 +57,6 @@ importers:
       endent:
         specifier: npm:@dword-design/endent@^1.4.1
         version: '@dword-design/endent@1.4.1'
-      globby:
-        specifier: ^14.1.0
-        version: 14.1.0
       output-files:
         specifier: ^2.0.32
         version: 2.0.32

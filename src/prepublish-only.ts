@@ -1,9 +1,11 @@
 import pathLib from 'node:path';
 
+import * as babel from '@babel/core';
 import deleteEmpty from 'delete-empty';
 import packageName from 'depcheck-package-name';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
+import { globby } from 'globby';
 import micromatch from 'micromatch';
 import ts from 'typescript';
 
@@ -37,24 +39,36 @@ export default async function (options) {
       stderr: options.stderr,
     });
 
-    await fs.outputFile(
-      pathLib.join(this.cwd, 'babel.config.json'),
-      `${JSON.stringify({
-        plugins: [
-          [
-            packageName`babel-plugin-module-resolver`,
-            { alias: { '@/src': './dist' } },
-          ],
-          packageName`babel-plugin-add-import-extension`,
+    const babelConfig = {
+      plugins: [
+        [
+          packageName`babel-plugin-module-resolver`,
+          { alias: { '@/src': './dist' }, cwd: this.cwd },
         ],
-      })}\n`,
-    );
+        packageName`babel-plugin-add-import-extension`,
+      ],
+    };
 
-    try {
-      await execaCommand('babel dist --out-dir dist', { cwd: this.cwd });
-    } finally {
-      await fs.remove(pathLib.join(this.cwd, 'babel.config.json'));
-    }
+    const paths = await globby('**/*.js', {
+      absolute: true,
+      cwd: pathLib.join(this.cwd, 'dist'),
+    });
+
+    await Promise.all(
+      paths.map(async path => {
+        const source = await fs.readFile(path, 'utf8');
+
+        const result = await babel.transformAsync(source, {
+          ...babelConfig,
+          cwd: this.cwd,
+          filename: path,
+        });
+
+        if (result?.code) {
+          await fs.outputFile(path, result.code);
+        }
+      }),
+    );
 
     return result;
   }

@@ -1,4 +1,4 @@
-import P from 'node:path';
+import pathLib from 'node:path';
 
 import { Base } from '@dword-design/base';
 import { expect, test } from '@playwright/test';
@@ -10,7 +10,7 @@ import outputFiles from 'output-files';
 
 test('build errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
-  await fs.outputFile(P.join(cwd, 'src', 'index.ts'), 'foo bar');
+  await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'foo bar');
   const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
 
@@ -21,19 +21,24 @@ test('build errors', async ({}, testInfo) => {
 
 test('fixable', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
-  await fs.outputFile(P.join(cwd, 'src', 'index.ts'), "console.log('foo')");
+
+  await fs.outputFile(
+    pathLib.join(cwd, 'src', 'index.ts'),
+    "console.log('foo')",
+  );
+
   const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
-  expect(await fs.readFile(P.join(cwd, 'src', 'index.ts'), 'utf8')).toEqual(
-    "console.log('foo');\n",
-  );
+  expect(
+    await fs.readFile(pathLib.join(cwd, 'src', 'index.ts'), 'utf8'),
+  ).toEqual("console.log('foo');\n");
 });
 
 test('linting errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
-  await fs.outputFile(P.join(cwd, 'src', 'index.ts'), 'var foo = 2');
+  await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'var foo = 2');
   const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
 
@@ -41,19 +46,19 @@ test('linting errors', async ({}, testInfo) => {
     "'foo' is assigned a value but never used",
   );
 
-  expect(await fs.exists(P.join(cwd, 'dist'))).toBeFalsy();
+  expect(await fs.exists(pathLib.join(cwd, 'dist'))).toBeFalsy();
 });
 
 test('only copied files', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
-  await fs.outputFile(P.join(cwd, 'src', 'test.txt'), 'foo');
+  await fs.outputFile(pathLib.join(cwd, 'src', 'test.txt'), 'foo');
   const base = new Base({ name: '../../src' }, { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
   expect(
     await globby('*', {
-      cwd: P.join(cwd, 'dist'),
+      cwd: pathLib.join(cwd, 'dist'),
       dot: true,
       onlyFiles: false,
     }),
@@ -78,12 +83,29 @@ test('snapshots', async ({}, testInfo) => {
   expect(
     new Set(
       await globby('**', {
-        cwd: P.join(cwd, 'dist'),
+        cwd: pathLib.join(cwd, 'dist'),
         dot: true,
         onlyFiles: false,
       }),
     ),
   ).toEqual(new Set(Object.keys({ 'index.d.ts': true, 'index.js': true })));
+});
+
+test('alias', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await outputFiles(cwd, {
+    'dist/foo.js': '',
+    src: { 'bar.ts': 'export default 1', 'foo/index.ts': "import '@/src/bar'" },
+  });
+
+  const base = new Base({ name: '../../src' }, { cwd });
+  await base.prepare();
+  await base.run('prepublishOnly');
+
+  expect(
+    await fs.readFile(pathLib.join(cwd, 'dist', 'foo', 'index.js'), 'utf8'),
+  ).toEqual('import "../bar.js";');
 });
 
 test('valid', async ({}, testInfo) => {
@@ -113,7 +135,7 @@ test('valid', async ({}, testInfo) => {
   expect(
     new Set(
       await globby('*', {
-        cwd: P.join(cwd, 'dist'),
+        cwd: pathLib.join(cwd, 'dist'),
         dot: true,
         onlyFiles: false,
       }),
@@ -125,6 +147,6 @@ test('valid', async ({}, testInfo) => {
   );
 
   expect(
-    await fs.readFile(P.join(cwd, 'dist', 'index.js'), 'utf8'),
+    await fs.readFile(pathLib.join(cwd, 'dist', 'index.js'), 'utf8'),
   ).toMatchSnapshot();
 });
