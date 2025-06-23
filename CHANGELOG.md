@@ -1,3 +1,10 @@
+## [3.0.17](https://github.com/dword-design/base-config-node/compare/v3.0.16...v3.0.17) (2025-06-23)
+
+
+### Bug Fixes
+
+* disable sass transpiling ([be2a9aa](https://github.com/dword-design/base-config-node/commit/be2a9aa56e749dd0b8a1c7f8fd48ddd5eb626d1c))
+
 ## [3.0.16](https://github.com/dword-design/base-config-node/compare/v3.0.15...v3.0.16) (2025-06-15)
 
 
