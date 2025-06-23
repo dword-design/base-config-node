@@ -12,7 +12,7 @@ export default async function (options) {
   await this.lint(options);
 
   const result = await execaCommand(
-    'mkdist --declaration --ext=js --pattern=** --pattern=!**/*.spec.ts --pattern=!**/*-snapshots',
+    'mkdist --declaration --ext=js --pattern=** --pattern=!**/*.spec.ts --pattern=!**/*-snapshots --loaders=js,vue', // Do not compile sass
     {
       ...(options.log && { stdout: 'inherit' }),
       cwd: this.cwd,

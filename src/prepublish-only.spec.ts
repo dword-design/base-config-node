@@ -133,6 +133,30 @@ test('vue', async ({}, testInfo) => {
   );
 });
 
+test('sass', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await fs.outputFile(
+    pathLib.join(cwd, 'src', 'index.scss'),
+    endent`
+      $foo: red;
+
+      body { background: $foo }\n
+    `,
+  );
+
+  const base = new Base({ name: '../../src' }, { cwd });
+  await base.prepare();
+  await base.run('prepublishOnly');
+
+  expect(await fs.readFile(pathLib.join(cwd, 'dist', 'index.scss'), 'utf8'))
+    .toEqual(endent`
+      $foo: red;
+
+      body { background: $foo }\n
+    `);
+});
+
 test('vue typescript', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
 
