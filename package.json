@@ -33,7 +33,7 @@
     "@dword-design/depcheck-parser-sass": "^4.0.4",
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
-    "chokidar": "^3.6.0",
+    "chokidar": "^4.0.0",
     "debounce": "^2.2.0",
     "depcheck-package-name": "^3.0.1",
     "execa": "^9.6.0",
