@@ -43,7 +43,7 @@
     "typescript": "^5.8.3",
     "vue": "^3.5.16",
     "vue-sfc-transformer": "^0.1.16",
-    "vue-tsc": "^2.2.10"
+    "vue-tsc": "^3.0.0"
   },
   "devDependencies": {
     "@dword-design/base": "^13.0.6",
