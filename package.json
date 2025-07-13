@@ -46,7 +46,7 @@
     "vue-tsc": "^2.2.10"
   },
   "devDependencies": {
-    "@dword-design/base": "^13.0.6",
+    "@dword-design/base": "^14.0.0",
     "@playwright/test": "^1.53.0",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^2.0.32"
