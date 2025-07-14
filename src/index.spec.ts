@@ -14,7 +14,7 @@ test('sass library', async ({}, testInfo) => {
     'src/style.scss': "@import 'foo';",
   });
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.test();
 });

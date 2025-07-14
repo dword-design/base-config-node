@@ -11,7 +11,7 @@ import outputFiles from 'output-files';
 test('build errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'foo bar');
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
 
   await expect(base.run('prepublishOnly')).rejects.toThrow(
@@ -27,7 +27,7 @@ test('fixable', async ({}, testInfo) => {
     "console.log('foo')",
   );
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -39,7 +39,7 @@ test('fixable', async ({}, testInfo) => {
 test('linting errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'var foo = 2');
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
 
   await expect(base.run('prepublishOnly')).rejects.toThrow(
@@ -52,7 +52,7 @@ test('linting errors', async ({}, testInfo) => {
 test('only copied files', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(pathLib.join(cwd, 'src', 'test.txt'), 'foo');
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -76,7 +76,7 @@ test('snapshots', async ({}, testInfo) => {
     },
   });
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -98,7 +98,7 @@ test('alias', async ({}, testInfo) => {
     src: { 'bar.ts': 'export default 1', 'foo/index.ts': "import '@/src/bar'" },
   });
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -123,7 +123,7 @@ test('vue', async ({}, testInfo) => {
     `,
   );
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
   expect(await fs.exists(pathLib.join(cwd, 'dist', 'foo.vue'))).toEqual(true);
@@ -145,7 +145,7 @@ test('sass', async ({}, testInfo) => {
     `,
   );
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -173,7 +173,7 @@ test('vue typescript', async ({}, testInfo) => {
     `,
   );
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
@@ -208,7 +208,7 @@ test('valid', async ({}, testInfo) => {
     },
   });
 
-  const base = new Base({ name: '../../src' }, { cwd });
+  const base = new Base('../../src', { cwd });
   await base.prepare();
   await base.run('prepublishOnly');
 
