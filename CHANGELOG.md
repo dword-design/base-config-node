@@ -1,3 +1,18 @@
+# [4.0.0](https://github.com/dword-design/base-config-node/compare/v3.0.17...v4.0.0) (2025-07-14)
+
+
+### Bug Fixes
+
+* foo ([97efa03](https://github.com/dword-design/base-config-node/commit/97efa0319bc0a14c148e196874e6c2d8c1b0e7b7))
+* foo ([e87bcd6](https://github.com/dword-design/base-config-node/commit/e87bcd64caa44dda44f988c38c7dbb0d1dd3a5aa))
+* revert change ([3e69b08](https://github.com/dword-design/base-config-node/commit/3e69b087850b2267fcac14878cc1b86bac424428))
+* trigger release ([8c5eb3c](https://github.com/dword-design/base-config-node/commit/8c5eb3c402fffb6327ebb2e5a57bea90f6c49ad0))
+
+
+### BREAKING CHANGES
+
+* node.js >= 20
+
 ## [3.0.17](https://github.com/dword-design/base-config-node/compare/v3.0.16...v3.0.17) (2025-06-23)
 
 
