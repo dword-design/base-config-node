@@ -1,3 +1,11 @@
+## [4.0.1](https://github.com/dword-design/base-config-node/compare/v4.0.0...v4.0.1) (2025-08-02)
+
+
+### Bug Fixes
+
+* simplify package config ([5504c46](https://github.com/dword-design/base-config-node/commit/5504c4687bb00b4e5794dd430bdf5487120c1690))
+* update config files ([56341a8](https://github.com/dword-design/base-config-node/commit/56341a80db5ab051b59a5bd2cc222e2abd8ba4d7))
+
 # [4.0.0](https://github.com/dword-design/base-config-node/compare/v3.0.17...v4.0.0) (2025-07-14)
 
 
