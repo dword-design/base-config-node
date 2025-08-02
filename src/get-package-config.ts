@@ -19,10 +19,8 @@ export default ({ cwd = '.', mainFilename = 'index.ts' } = {}) => {
     exports: {
       ...(typeof packageConfig.exports === 'object' && packageConfig.exports),
       '.': {
-        import: {
-          default: `./dist/${basename}.js`,
-          types: `./dist/${basename}.d.ts`,
-        },
+        default: `./dist/${basename}.js`,
+        types: `./dist/${basename}.d.ts`,
       },
     },
     main: `dist/${basename}.js`,
