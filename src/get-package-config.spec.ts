@@ -17,9 +17,7 @@ test('esm', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
     },
     main: 'dist/index.js',
   });
@@ -38,9 +36,7 @@ test('multiple exports', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
       './foo': './dist/index.js',
     },
     main: 'dist/index.js',
@@ -59,9 +55,7 @@ test('outdated object export', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
       './foo': './dist/foo.js',
     },
     main: 'dist/index.js',
@@ -78,9 +72,7 @@ test('outdated string export', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
     },
     main: 'dist/index.js',
   });
@@ -97,9 +89,7 @@ test('single default export in object', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
     },
     main: 'dist/index.js',
   });
@@ -116,9 +106,7 @@ test('single non-export in object', async ({}, testInfo) => {
 
   expect(self({ cwd })).toEqual({
     exports: {
-      '.': {
-        import: { default: './dist/index.js', types: './dist/index.d.ts' },
-      },
+      '.': { default: './dist/index.js', types: './dist/index.d.ts' },
       './foo': './dist/foo.js',
     },
     main: 'dist/index.js',
@@ -130,9 +118,7 @@ test('mainFilename', async ({}, testInfo) => {
   await fs.outputFile(pathLib.join(cwd, 'src', 'foo.ts'), '');
 
   expect(self({ cwd, mainFilename: 'foo.ts' })).toEqual({
-    exports: {
-      '.': { import: { default: './dist/foo.js', types: './dist/foo.d.ts' } },
-    },
+    exports: { '.': { default: './dist/foo.js', types: './dist/foo.d.ts' } },
     main: 'dist/foo.js',
   });
 });
