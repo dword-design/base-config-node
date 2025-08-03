@@ -33,7 +33,7 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "chokidar": "^3.6.0",
     "debounce": "^2.2.0",
-    "depcheck-package-name": "^3.0.1",
+    "depcheck-package-name": "^4.0.0",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
