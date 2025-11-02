@@ -32,7 +32,7 @@
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "chokidar": "^3.6.0",
-    "debounce": "^2.2.0",
+    "debounce": "^3.0.0",
     "depcheck-package-name": "^3.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
