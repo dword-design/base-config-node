@@ -24,19 +24,22 @@
     "lint": "base lint",
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
-    "test": "base test"
+    "test": "base test",
+    "typecheck": "base typecheck",
+    "verify": "base verify"
   },
   "dependencies": {
     "@babel/core": "^7.28.0",
-    "@dword-design/depcheck-parser-sass": "^4.0.4",
+    "@dword-design/base": "^15.4.1",
+    "@dword-design/depcheck-parser-sass": "^5.0.0",
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "chokidar": "^3.6.0",
-    "debounce": "^2.2.0",
-    "depcheck-package-name": "^3.0.1",
+    "debounce": "^3.0.0",
+    "depcheck-package-name": "^4.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
-    "globby": "^14.1.0",
+    "globby": "^15.0.0",
     "mkdist": "^2.3.0",
     "typescript": "^5.8.3",
     "vue": "^3.5.17",
@@ -44,8 +47,9 @@
     "vue-tsc": "^2.2.12"
   },
   "devDependencies": {
-    "@dword-design/base": "^14.0.0",
     "@playwright/test": "^1.54.1",
+    "@types/babel__core": "^7.20.5",
+    "@types/fs-extra": "^11.0.4",
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^3.0.0"
   },
