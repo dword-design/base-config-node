@@ -1,8 +1,12 @@
+import type { Base, PartialCommandOptions } from '@dword-design/base';
 import { execaCommand } from 'execa';
 
 import resolveAliases from './resolve-aliases';
 
-export default async function (options) {
+export default async function (
+  this: Base,
+  options: PartialCommandOptions = {},
+) {
   options = {
     log: process.env.NODE_ENV !== 'test',
     stderr: 'inherit',
