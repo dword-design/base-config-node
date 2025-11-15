@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/dword-design/base-config-node/compare/v4.0.2...v4.0.3) (2025-11-15)
+
+
+### Bug Fixes
+
+* upgrade vue-tsc and chokidar ([85dfd9a](https://github.com/dword-design/base-config-node/commit/85dfd9a13d1062cb3755f23337ef41324fc18aa8))
+
 ## [4.0.2](https://github.com/dword-design/base-config-node/compare/v4.0.1...v4.0.2) (2025-11-15)
 
 
