@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/dword-design/base-config-node/compare/v4.0.3...v4.0.4) (2025-11-15)
+
+
+### Bug Fixes
+
+* export dev and prepublishOnly ([35bddd6](https://github.com/dword-design/base-config-node/commit/35bddd6c66b533ebfbebd9b0af14f43f6c732f41))
+
 ## [4.0.3](https://github.com/dword-design/base-config-node/compare/v4.0.2...v4.0.3) (2025-11-15)
 
 
