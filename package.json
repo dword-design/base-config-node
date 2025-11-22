@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.28.0",
-    "@dword-design/base": "^15.4.1",
+    "@dword-design/base": "^16.0.1",
     "@dword-design/depcheck-parser-sass": "^5.0.0",
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
@@ -39,7 +39,7 @@
     "depcheck-package-name": "^4.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
-    "globby": "^15.0.0",
+    "globby": "^16.0.0",
     "mkdist": "^2.3.0",
     "typescript": "^5.8.3",
     "vue": "^3.5.17",
@@ -53,9 +53,9 @@
     "endent": "npm:@dword-design/endent@^1.4.1",
     "output-files": "^3.0.0"
   },
-  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
+  "packageManager": "pnpm@10.23.0+sha512.21c4e5698002ade97e4efe8b8b4a89a8de3c85a37919f957e7a0f30f38fbc5bbdd05980ffe29179b2fb6e6e691242e098d945d1601772cad0fef5fb6411e2a4b",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
