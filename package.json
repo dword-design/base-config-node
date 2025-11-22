@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.28.0",
-    "@dword-design/base": "^15.4.1",
+    "@dword-design/base": "^16.0.1",
     "@dword-design/depcheck-parser-sass": "^5.0.0",
     "babel-plugin-add-import-extension": "^1.6.0",
     "babel-plugin-module-resolver": "^5.0.2",
@@ -39,7 +39,7 @@
     "depcheck-package-name": "^4.0.1",
     "execa": "^9.6.0",
     "fs-extra": "^11.3.0",
-    "globby": "^15.0.0",
+    "globby": "^16.0.0",
     "mkdist": "^2.3.0",
     "typescript": "^5.8.3",
     "vue": "^3.5.17",
