@@ -1,3 +1,11 @@
+## [5.0.1](https://github.com/dword-design/base-config-node/compare/v5.0.0...v5.0.1) (2025-11-22)
+
+
+### Bug Fixes
+
+* foo ([a876181](https://github.com/dword-design/base-config-node/commit/a876181964c3880dede82216996854e201e27bc6))
+* foo ([0ab15f4](https://github.com/dword-design/base-config-node/commit/0ab15f4dc46ac8ec7aa8ffda45b5d95d40013f0f))
+
 # [5.0.0](https://github.com/dword-design/base-config-node/compare/v4.0.4...v5.0.0) (2025-11-22)
 
 
