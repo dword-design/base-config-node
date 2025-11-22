@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/dword-design/base-config-node/compare/v4.0.4...v5.0.0) (2025-11-22)
+
+
+### Bug Fixes
+
+* base upgrade ([#268](https://github.com/dword-design/base-config-node/issues/268)) ([5e0893d](https://github.com/dword-design/base-config-node/commit/5e0893d4cc13e04492a675e7052d0d12d31403be))
+* foo ([8e3dfa7](https://github.com/dword-design/base-config-node/commit/8e3dfa7fde6ba21076aa3c3572f845c7f8641308))
+* foo ([d390325](https://github.com/dword-design/base-config-node/commit/d390325c87459767816d3218d702484b0d7c9af8))
+* revert last changes ([c2cd5b1](https://github.com/dword-design/base-config-node/commit/c2cd5b1c36e168c472be1f9ea20776143a197ae6))
+* update config files ([cffaed7](https://github.com/dword-design/base-config-node/commit/cffaed706eacbac1d798eb617de9ef12026958c0))
+* update pnpm to v10.23.0 ([#246](https://github.com/dword-design/base-config-node/issues/246)) ([0c8df6c](https://github.com/dword-design/base-config-node/commit/0c8df6ccbd064b3d0bf09ea9fc6ee45a2ee2e072))
+
+
+### BREAKING CHANGES
+
+* node >= 22
+
 ## [4.0.4](https://github.com/dword-design/base-config-node/compare/v4.0.3...v4.0.4) (2025-11-15)
 
 
