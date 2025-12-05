@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/dword-design/base-config-node/compare/v5.0.1...v5.0.2) (2025-12-05)
+
+
+### Bug Fixes
+
+* syntax ([40f4a90](https://github.com/dword-design/base-config-node/commit/40f4a90694baee4fc5b32c6fa48f3a1c62adbd6b))
+
 ## [5.0.1](https://github.com/dword-design/base-config-node/compare/v5.0.0...v5.0.1) (2025-11-22)
 
 
