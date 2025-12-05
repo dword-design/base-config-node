@@ -18,4 +18,10 @@ export default defineBaseConfig(function (this: Base) {
   };
 });
 
-export { getPackageConfig, dev, prepublishOnly }; // TODO: Otherwise the full type of the config cannot be inferred by TypeScript when used somewhere else
+// TODO: Otherwise the full type of the config cannot be inferred by TypeScript when used somewhere else
+
+export { default as getPackageConfig } from './get-package-config';
+
+export { default as prepublishOnly } from './prepublish-only';
+
+export { default as dev } from './dev';
