@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/dword-design/base-config-node/compare/v5.0.2...v5.0.3) (2025-12-28)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/depcheck-parser-sass to v6 ([#272](https://github.com/dword-design/base-config-node/issues/272)) ([97d0590](https://github.com/dword-design/base-config-node/commit/97d059028f958973ec82b7c29a5ec77c4c936702))
+
 ## [5.0.2](https://github.com/dword-design/base-config-node/compare/v5.0.1...v5.0.2) (2025-12-05)
 
 
