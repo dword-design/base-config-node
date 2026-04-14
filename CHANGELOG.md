@@ -1,3 +1,11 @@
+## [5.0.4](https://github.com/dword-design/base-config-node/compare/v5.0.3...v5.0.4) (2026-04-14)
+
+
+### Bug Fixes
+
+* dedicated build command ([bfc0ef7](https://github.com/dword-design/base-config-node/commit/bfc0ef7adf2075bc5389f577d26485144f7fd916))
+* update config files ([e852302](https://github.com/dword-design/base-config-node/commit/e85230214d5913917ae964a1ea523ec75df4087e))
+
 ## [5.0.3](https://github.com/dword-design/base-config-node/compare/v5.0.2...v5.0.3) (2025-12-28)
 
 
