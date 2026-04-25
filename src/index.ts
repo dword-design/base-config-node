@@ -15,7 +15,6 @@ export default defineBaseConfig(function (this: Base) {
     gitignore: ['/dist'],
     npmPublish: true,
     packageConfig: getPackageConfig({ cwd: this.cwd }),
-    useJobMatrix: true,
   };
 });
 
