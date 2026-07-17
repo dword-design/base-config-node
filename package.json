@@ -38,7 +38,7 @@
     "chokidar": "^4.0.3",
     "debounce": "^3.0.0",
     "depcheck-package-name": "^4.0.1",
-    "execa": "^9.6.0",
+    "execa": "^10.0.0",
     "fs-extra": "^11.3.2",
     "globby": "^16.0.0",
     "mkdist": "^2.4.1",
