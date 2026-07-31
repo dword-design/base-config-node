@@ -1,3 +1,11 @@
+## [5.0.6](https://github.com/dword-design/base-config-node/compare/v5.0.5...v5.0.6) (2026-07-31)
+
+
+### Bug Fixes
+
+* fix esbuild version in mkdist ([5a133cf](https://github.com/dword-design/base-config-node/commit/5a133cf47156996c4b762cc832c95a1f46eaf1f8))
+* foo ([606f8c5](https://github.com/dword-design/base-config-node/commit/606f8c5e5ef8d84f6f5a100776a972143eac2b5b))
+
 ## [5.0.5](https://github.com/dword-design/base-config-node/compare/v5.0.4...v5.0.5) (2026-04-25)
 
 
