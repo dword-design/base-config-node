@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/dword-design/base-config-node/compare/v5.0.6...v5.0.7) (2026-07-31)
+
+
+### Bug Fixes
+
+* detect mkdist even if not hoisted ([3aaef0d](https://github.com/dword-design/base-config-node/commit/3aaef0dbecb15ffe6fd6af902e1be971d432bd11))
+
 ## [5.0.6](https://github.com/dword-design/base-config-node/compare/v5.0.5...v5.0.6) (2026-07-31)
 
 
