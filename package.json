@@ -41,7 +41,7 @@
     "execa": "^9.6.0",
     "fs-extra": "^11.3.2",
     "globby": "^16.0.0",
-    "mkdist": "npm:@dword-design/mkdist-fork@^0.0.1",
+    "mkdist": "npm:@dword-design/mkdist-fork@^0.0.2",
     "typescript": "^5.9.3",
     "vue": "^3.5.24",
     "vue-sfc-transformer": "^0.1.17",

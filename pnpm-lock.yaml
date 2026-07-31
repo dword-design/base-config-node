@@ -42,8 +42,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0
       mkdist:
-        specifier: npm:@dword-design/mkdist-fork@^0.0.1
-        version: '@dword-design/mkdist-fork@0.0.1(typescript@5.9.3)(vue-sfc-transformer@0.1.17(@vue/compiler-core@3.5.24)(esbuild@0.28.1)(vue@3.5.24(typescript@5.9.3)))(vue-tsc@3.1.4(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))'
+        specifier: npm:@dword-design/mkdist-fork@^0.0.2
+        version: '@dword-design/mkdist-fork@0.0.2(typescript@5.9.3)(vue-sfc-transformer@0.1.17(@vue/compiler-core@3.5.24)(esbuild@0.28.1)(vue@3.5.24(typescript@5.9.3)))(vue-tsc@3.1.4(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))'
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -316,8 +316,8 @@ packages:
     engines: {node: '>=18'}
     deprecated: Use lodash and endent
 
-  '@dword-design/mkdist-fork@0.0.1':
-    resolution: {integrity: sha512-6HxeXoG9OUeqtVT+PeJ35L4MPHzycDCc2HYvg/X9nHv/7MGtkzpzvCql6RWBCK9v4thsaoI/xuEeD7ifQnG6tg==}
+  '@dword-design/mkdist-fork@0.0.2':
+    resolution: {integrity: sha512-2/PLAHFAD/GTcRI7X/U0gC7XnRAN5FIO8ZPo8PCbOR8ZgvHxtU6SOAdRnUSpFRQ2Um5vY1NDDxTBNnxhbE61/g==}
     hasBin: true
     peerDependencies:
       sass: ^1.92.1
@@ -5137,14 +5137,14 @@ snapshots:
       lodash: 4.17.21
       tinycolor2: 1.6.0
 
-  '@dword-design/mkdist-fork@0.0.1(typescript@5.9.3)(vue-sfc-transformer@0.1.17(@vue/compiler-core@3.5.24)(esbuild@0.28.1)(vue@3.5.24(typescript@5.9.3)))(vue-tsc@3.1.4(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
+  '@dword-design/mkdist-fork@0.0.2(typescript@5.9.3)(vue-sfc-transformer@0.1.17(@vue/compiler-core@3.5.24)(esbuild@0.28.1)(vue@3.5.24(typescript@5.9.3)))(vue-tsc@3.1.4(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       autoprefixer: 10.4.22(postcss@8.5.6)
       citty: 0.1.6
       cssnano: 8.0.2(postcss@8.5.6)
       defu: 6.1.4
       esbuild: 0.28.1
-      jiti: 1.21.7
+      jiti: 2.6.1
       mlly: 1.8.0
       pathe: 2.0.3
       pkg-types: 2.3.0
@@ -6090,8 +6090,8 @@ snapshots:
 
   autoprefixer@10.4.22(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
-      caniuse-lite: 1.0.30001756
+      browserslist: 4.28.7
+      caniuse-lite: 1.0.30001806
       fraction.js: 5.3.4
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -6203,15 +6203,15 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.28.0
-      caniuse-lite: 1.0.30001756
+      browserslist: 4.28.7
+      caniuse-lite: 1.0.30001806
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
   caniuse-api@4.0.0:
     dependencies:
       browserslist: 4.28.7
-      caniuse-lite: 1.0.30001756
+      caniuse-lite: 1.0.30001806
 
   caniuse-lite@1.0.30001756: {}
 
@@ -6424,7 +6424,7 @@ snapshots:
 
   core-js-compat@3.47.0:
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
 
   core-util-is@1.0.3: {}
 
@@ -8278,7 +8278,7 @@ snapshots:
 
   postcss-colormin@7.0.5(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       colord: 2.9.3
       postcss: 8.5.6
@@ -8294,7 +8294,7 @@ snapshots:
 
   postcss-convert-values@7.0.8(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
@@ -8352,7 +8352,7 @@ snapshots:
 
   postcss-merge-rules@7.0.7(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.1(postcss@8.5.6)
       postcss: 8.5.6
@@ -8392,7 +8392,7 @@ snapshots:
 
   postcss-minify-params@7.0.5(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       cssnano-utils: 5.0.1(postcss@8.5.6)
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
@@ -8483,7 +8483,7 @@ snapshots:
 
   postcss-normalize-unicode@7.0.5(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
@@ -8527,7 +8527,7 @@ snapshots:
 
   postcss-reduce-initial@7.0.5(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       postcss: 8.5.6
 
@@ -8983,7 +8983,7 @@ snapshots:
 
   stylehacks@7.0.7(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.7
       postcss: 8.5.6
       postcss-selector-parser: 7.1.0
 
