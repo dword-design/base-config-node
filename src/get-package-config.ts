@@ -9,9 +9,8 @@ export default ({ cwd = '.', mainFilename = 'index.ts' } = {}) => {
 
   const packageConfig = {
     type: 'module',
-    ...(fs.existsSync(pathLib.join(cwd, 'package.json'))
-      ? fs.readJsonSync(pathLib.join(cwd, 'package.json'))
-      : {}),
+    ...(fs.existsSync(pathLib.join(cwd, 'package.json')) &&
+      fs.readJsonSync(pathLib.join(cwd, 'package.json'))),
   };
 
   const basename = pathLib.basename(mainFilename, '.ts');

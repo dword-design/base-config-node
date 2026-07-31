@@ -40,14 +40,14 @@ test('snapshots', async ({}, testInfo) => {
   await base.run('build');
 
   expect(
-    new Set(
+    Object.fromEntries(
       await globby('**', {
         cwd: pathLib.join(cwd, 'dist'),
         dot: true,
         onlyFiles: false,
-      }),
+      }).then(filenames => filenames.map(filename => [filename, true])),
     ),
-  ).toEqual(new Set(Object.keys({ 'index.d.ts': true, 'index.js': true })));
+  ).toEqual({ 'index.d.ts': true, 'index.js': true });
 });
 
 test('alias', async ({}, testInfo) => {

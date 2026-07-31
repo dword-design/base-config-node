@@ -2,14 +2,14 @@ import { type Base, defineBaseConfig } from '@dword-design/base';
 import depcheckParserSass from '@dword-design/depcheck-parser-sass';
 
 import build from './build';
-import dev from './dev';
+import development from './dev';
 import getPackageConfig from './get-package-config';
 import prepublishOnly from './prepublish-only';
 
 export default defineBaseConfig(function (this: Base) {
   return {
     allowedMatches: ['src'],
-    commands: { build, dev, prepublishOnly },
+    commands: { build, dev: development, prepublishOnly },
     depcheckConfig: { parsers: { '**/*.scss': depcheckParserSass } },
     editorIgnore: ['dist'],
     gitignore: ['/dist'],
