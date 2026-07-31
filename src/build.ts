@@ -1,7 +1,12 @@
+import pathLib from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import type { Base, PartialCommandOptions } from '@dword-design/base';
 import { execaCommand } from 'execa';
 
 import resolveAliases from './resolve-aliases';
+
+const __dirname = pathLib.dirname(fileURLToPath(import.meta.url));
 
 export default async function (
   this: Base,
@@ -18,6 +23,8 @@ export default async function (
     {
       ...(options.log && { stdout: 'inherit' }),
       cwd: this.cwd,
+      localDir: __dirname,
+      preferLocal: true,
       stderr: options.stderr,
     },
   );
