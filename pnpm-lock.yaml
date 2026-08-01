@@ -12,8 +12,8 @@ importers:
         specifier: ^7.29.7
         version: 7.29.7
       '@dword-design/base':
-        specifier: ^17.0.0
-        version: 17.0.0(@types/node@26.1.2)(@typescript-eslint/parser@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@typescript-eslint/utils@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@vue/compiler-core@3.5.40)(esbuild@0.28.1)(sass@1.97.3)
+        specifier: ^17.0.1
+        version: 17.0.1(@types/node@26.1.2)(@typescript-eslint/parser@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@typescript-eslint/utils@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@vue/compiler-core@3.5.40)(esbuild@0.28.1)(sass@1.97.3)
       '@dword-design/depcheck-parser-sass':
         specifier: ^6.0.3
         version: 6.0.3
@@ -267,8 +267,8 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  '@dword-design/base@17.0.0':
-    resolution: {integrity: sha512-EmXTkcW8mpx4y04xCmjBXU9w0UY9vveu/mCEdHBw3nEWPZPpmkdK/DcZo5n03wMT96U65/9cSfjyKsPg62/Cug==}
+  '@dword-design/base@17.0.1':
+    resolution: {integrity: sha512-5MeD4mk+qAYd0+7JF0HUSWYSNPtNB3rGdI8cvLhptAQpgn7+CKe0UswReWqTKG9U65pJKKJ3WTV9KyuJrHUHtQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -4910,7 +4910,7 @@ snapshots:
       - sass
       - supports-color
 
-  '@dword-design/base@17.0.0(@types/node@26.1.2)(@typescript-eslint/parser@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@typescript-eslint/utils@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@vue/compiler-core@3.5.40)(esbuild@0.28.1)(sass@1.97.3)':
+  '@dword-design/base@17.0.1(@types/node@26.1.2)(@typescript-eslint/parser@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@typescript-eslint/utils@8.65.0(eslint@10.8.0(jiti@2.7.0))(typescript@5.9.3))(@vue/compiler-core@3.5.40)(esbuild@0.28.1)(sass@1.97.3)':
     dependencies:
       '@commitlint/cli': 18.6.1(@types/node@26.1.2)(typescript@5.9.3)
       '@commitlint/config-conventional': 18.6.3

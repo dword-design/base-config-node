@@ -1,6 +1,6 @@
 import pathLib from 'node:path';
 
-import type { Base, PartialCommandOptions } from '@dword-design/base';
+import { type Base, type PartialCommandOptions, run } from '@dword-design/base';
 import chokidar from 'chokidar';
 import debounce from 'debounce';
 
@@ -9,7 +9,7 @@ export default (base: Base, options: PartialCommandOptions = {}) =>
     'all',
     debounce(async () => {
       try {
-        await base.run('prepublishOnly', options);
+        await run(base, 'prepublishOnly', options);
       } catch (error) {
         console.log(error instanceof Error ? error.message : String(error));
       }

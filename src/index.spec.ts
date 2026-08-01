@@ -1,4 +1,4 @@
-import { Base } from '@dword-design/base';
+import { Base, prepare, test as baseTest } from '@dword-design/base';
 import { test } from '@playwright/test';
 import outputFiles from 'output-files';
 
@@ -15,6 +15,6 @@ test('sass library', async ({}, testInfo) => {
   });
 
   const base = new Base('../../src', { cwd });
-  await base.prepare();
-  await base.test();
+  await prepare(base);
+  await baseTest(base);
 });

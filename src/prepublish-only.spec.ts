@@ -1,6 +1,6 @@
 import pathLib from 'node:path';
 
-import { Base } from '@dword-design/base';
+import { Base, prepare, run } from '@dword-design/base';
 import { expect, test } from '@playwright/test';
 import fs from 'fs-extra';
 
@@ -8,9 +8,9 @@ test('build errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'foo bar');
   const base = new Base('../../src', { cwd });
-  await base.prepare();
+  await prepare(base);
 
-  await expect(base.run('prepublishOnly')).rejects.toThrow(
+  await expect(run(base, 'prepublishOnly')).rejects.toThrow(
     'Parsing error: Unexpected keyword or identifier',
   );
 });
@@ -24,8 +24,8 @@ test('fixable', async ({}, testInfo) => {
   );
 
   const base = new Base('../../src', { cwd });
-  await base.prepare();
-  await base.run('prepublishOnly');
+  await prepare(base);
+  await run(base, 'prepublishOnly');
 
   expect(
     await fs.readFile(pathLib.join(cwd, 'src', 'index.ts'), 'utf8'),
@@ -36,9 +36,9 @@ test('linting errors', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
   await fs.outputFile(pathLib.join(cwd, 'src', 'index.ts'), 'var foo = 2');
   const base = new Base('../../src', { cwd });
-  await base.prepare();
+  await prepare(base);
 
-  await expect(base.run('prepublishOnly')).rejects.toThrow(
+  await expect(run(base, 'prepublishOnly')).rejects.toThrow(
     "'foo' is assigned a value but never used",
   );
 
