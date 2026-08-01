@@ -8,10 +8,7 @@ import resolveAliases from './resolve-aliases';
 
 const __dirname = pathLib.dirname(fileURLToPath(import.meta.url));
 
-export default async function (
-  this: Base,
-  options: PartialCommandOptions = {},
-) {
+export default async (base: Base, options: PartialCommandOptions = {}) => {
   options = {
     log: process.env.NODE_ENV !== 'test',
     stderr: 'inherit',
@@ -22,13 +19,13 @@ export default async function (
     'mkdist --declaration --ext=js --pattern=** --pattern=!**/*.spec.ts --pattern=!**/*-snapshots --loaders=js,vue', // Do not compile sass
     {
       ...(options.log && { stdout: 'inherit' }),
-      cwd: this.cwd,
+      cwd: base.cwd,
       localDir: __dirname,
       preferLocal: true,
       stderr: options.stderr,
     },
   );
 
-  await resolveAliases({ cwd: this.cwd });
+  await resolveAliases({ cwd: base.cwd });
   return result;
-}
+};

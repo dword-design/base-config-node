@@ -30,29 +30,29 @@
     "verify": "base verify"
   },
   "dependencies": {
-    "@babel/core": "^7.28.5",
-    "@dword-design/base": "^16.0.4",
-    "@dword-design/depcheck-parser-sass": "^6.0.0",
+    "@babel/core": "^7.29.7",
+    "@dword-design/base": "^17.0.0",
+    "@dword-design/depcheck-parser-sass": "^6.0.3",
     "babel-plugin-add-import-extension": "^1.6.0",
-    "babel-plugin-module-resolver": "^5.0.2",
+    "babel-plugin-module-resolver": "^5.0.3",
     "chokidar": "^4.0.3",
     "debounce": "^3.0.0",
-    "depcheck-package-name": "^4.0.1",
-    "execa": "^9.6.0",
-    "fs-extra": "^11.3.2",
-    "globby": "^16.0.0",
+    "depcheck-package-name": "^5.0.0",
+    "execa": "^9.6.1",
+    "fs-extra": "^11.4.0",
+    "globby": "^16.2.2",
     "mkdist": "^2.4.1",
     "typescript": "^5.9.3",
-    "vue": "^3.5.24",
+    "vue": "^3.5.40",
     "vue-sfc-transformer": "^0.1.17",
-    "vue-tsc": "^3.1.4"
+    "vue-tsc": "^3.3.9"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.62.1",
     "@types/babel__core": "^7.20.5",
     "@types/fs-extra": "^11.0.4",
     "endent": "npm:@dword-design/endent@^1.4.7",
-    "output-files": "^3.0.0"
+    "output-files": "^4.0.0"
   },
   "packageManager": "pnpm@10.23.0+sha512.21c4e5698002ade97e4efe8b8b4a89a8de3c85a37919f957e7a0f30f38fbc5bbdd05980ffe29179b2fb6e6e691242e098d945d1601772cad0fef5fb6411e2a4b",
   "engines": {
