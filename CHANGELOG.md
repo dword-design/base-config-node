@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/dword-design/base-config-node/compare/v6.0.0...v6.0.1) (2026-08-01)
+
+
+### Bug Fixes
+
+* migrate base api ([92c9f99](https://github.com/dword-design/base-config-node/commit/92c9f99d1bdbd616bafcfdde4cb90d37a135a89b))
+
 # [6.0.0](https://github.com/dword-design/base-config-node/compare/v5.0.7...v6.0.0) (2026-08-01)
 
 
