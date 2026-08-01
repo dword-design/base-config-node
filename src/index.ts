@@ -6,17 +6,15 @@ import development from './dev';
 import getPackageConfig from './get-package-config';
 import prepublishOnly from './prepublish-only';
 
-export default defineBaseConfig(function (this: Base) {
-  return {
-    allowedMatches: ['src'],
-    commands: { build, dev: development, prepublishOnly },
-    depcheckConfig: { parsers: { '**/*.scss': depcheckParserSass } },
-    editorIgnore: ['dist'],
-    gitignore: ['/dist'],
-    npmPublish: true,
-    packageConfig: getPackageConfig({ cwd: this.cwd }),
-  };
-});
+export default defineBaseConfig((base: Base) => ({
+  allowedMatches: ['src'],
+  commands: { build, dev: development, prepublishOnly },
+  depcheckConfig: { parsers: { '**/*.scss': depcheckParserSass } },
+  editorIgnore: ['dist'],
+  gitignore: ['/dist'],
+  npmPublish: true,
+  packageConfig: getPackageConfig({ cwd: base.cwd }),
+}));
 
 // TODO: Otherwise the full type of the config cannot be inferred by TypeScript when used somewhere else
 

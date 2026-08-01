@@ -40,14 +40,12 @@ test('snapshots', async ({}, testInfo) => {
   await base.run('build');
 
   expect(
-    Object.fromEntries(
-      await globby('**', {
-        cwd: pathLib.join(cwd, 'dist'),
-        dot: true,
-        onlyFiles: false,
-      }).then(filenames => filenames.map(filename => [filename, true])),
-    ),
-  ).toEqual({ 'index.d.ts': true, 'index.js': true });
+    await globby('**', {
+      cwd: pathLib.join(cwd, 'dist'),
+      dot: true,
+      onlyFiles: false,
+    }).then(filenames => new Set(filenames)),
+  ).toEqual(new Set(['index.d.ts', 'index.js']));
 });
 
 test('alias', async ({}, testInfo) => {
@@ -172,18 +170,12 @@ test('valid', async ({}, testInfo) => {
   await base.run('build');
 
   expect(
-    new Set(
-      await globby('*', {
-        cwd: pathLib.join(cwd, 'dist'),
-        dot: true,
-        onlyFiles: false,
-      }),
-    ),
-  ).toEqual(
-    new Set(
-      Object.keys({ 'index.d.ts': true, 'index.js': true, 'test.txt': true }),
-    ),
-  );
+    await globby('*', {
+      cwd: pathLib.join(cwd, 'dist'),
+      dot: true,
+      onlyFiles: false,
+    }).then(filenames => new Set(filenames)),
+  ).toEqual(new Set(['index.d.ts', 'index.js', 'test.txt']));
 
   expect(
     await fs.readFile(pathLib.join(cwd, 'dist', 'index.js'), 'utf8'),
