@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/dword-design/base-config-node/compare/v5.0.7...v6.0.0) (2026-08-01)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#283](https://github.com/dword-design/base-config-node/issues/283)) ([c3f0e36](https://github.com/dword-design/base-config-node/commit/c3f0e3673126fb62858a6408fbf43ceb401544c2))
+
+
+### BREAKING CHANGES
+
+* require @dword-design/base >= 17
+
 ## [5.0.7](https://github.com/dword-design/base-config-node/compare/v5.0.6...v5.0.7) (2026-07-31)
 
 
