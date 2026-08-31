@@ -43,7 +43,7 @@ importers:
         version: 16.2.4
       mkdist:
         specifier: ^2.4.1
-        version: 2.4.1(sass@1.97.3)(typescript@5.9.3)(vue-sfc-transformer@0.1.17(@vue/compiler-core@3.5.42)(esbuild@0.28.2)(vue@3.5.42(typescript@5.9.3)))(vue-tsc@3.3.11(typescript@5.9.3))(vue@3.5.42(typescript@5.9.3))
+        version: 2.4.1(sass@1.97.3)(typescript@5.9.3)(vue-sfc-transformer@0.3.0(@volar/typescript@2.4.28)(@vue/compiler-core@3.5.42)(@vue/language-core@3.3.11)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.42(typescript@5.9.3)))(vue-tsc@3.3.11(typescript@5.9.3))(vue@3.5.42(typescript@5.9.3))
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -51,8 +51,8 @@ importers:
         specifier: ^3.5.40
         version: 3.5.42(typescript@5.9.3)
       vue-sfc-transformer:
-        specifier: ^0.1.17
-        version: 0.1.17(@vue/compiler-core@3.5.42)(esbuild@0.28.2)(vue@3.5.42(typescript@5.9.3))
+        specifier: ^0.3.0
+        version: 0.3.0(@volar/typescript@2.4.28)(@vue/compiler-core@3.5.42)(@vue/language-core@3.3.11)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.42(typescript@5.9.3))
       vue-tsc:
         specifier: ^3.3.9
         version: 3.3.11(typescript@5.9.3)
@@ -4419,6 +4419,29 @@ packages:
       esbuild: '*'
       vue: ^3.5.13
 
+  vue-sfc-transformer@0.3.0:
+    resolution: {integrity: sha512-WdpctRqmwbePyfHFK/vZgyiUWkDDdN/0V7s5KFCX8DAEwCQI+XKudNgoJbGfDvVxLrWtvV9D6H7kvMkZeYGAhg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@volar/typescript': ^2.4.0
+      '@vue/compiler-core': ^3.5.13
+      '@vue/language-core': ^3.0.0
+      esbuild: '*'
+      rolldown: '>=1.0.0-beta.0'
+      typescript: '>=5.0.0'
+      vue: ^3.5.13
+    peerDependenciesMeta:
+      '@volar/typescript':
+        optional: true
+      '@vue/language-core':
+        optional: true
+      esbuild:
+        optional: true
+      rolldown:
+        optional: true
+      typescript:
+        optional: true
+
   vue-tsc@2.2.12:
     resolution: {integrity: sha512-P7OP77b2h/Pmk+lZdJ0YWs+5tJ6J2+uOQPo7tlBnY44QqQSPYvS0qVT4wqDJgwrZaLe47etJLLQRFia71GYITw==}
     hasBin: true
@@ -8015,6 +8038,28 @@ snapshots:
       vue-sfc-transformer: 0.1.17(@vue/compiler-core@3.5.42)(esbuild@0.28.2)(vue@3.5.42(typescript@5.9.3))
       vue-tsc: 3.3.11(typescript@5.9.3)
 
+  mkdist@2.4.1(sass@1.97.3)(typescript@5.9.3)(vue-sfc-transformer@0.3.0(@volar/typescript@2.4.28)(@vue/compiler-core@3.5.42)(@vue/language-core@3.3.11)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.42(typescript@5.9.3)))(vue-tsc@3.3.11(typescript@5.9.3))(vue@3.5.42(typescript@5.9.3)):
+    dependencies:
+      autoprefixer: 10.5.4(postcss@8.5.26)
+      citty: 0.1.6
+      cssnano: 7.1.9(postcss@8.5.26)
+      defu: 6.1.7
+      esbuild: 0.25.12
+      jiti: 1.21.7
+      mlly: 1.8.2
+      pathe: 2.0.3
+      pkg-types: 2.3.1
+      postcss: 8.5.26
+      postcss-nested: 7.0.2(postcss@8.5.26)
+      semver: 7.8.5
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      sass: 1.97.3
+      typescript: 5.9.3
+      vue: 3.5.42(typescript@5.9.3)
+      vue-sfc-transformer: 0.3.0(@volar/typescript@2.4.28)(@vue/compiler-core@3.5.42)(@vue/language-core@3.3.11)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.42(typescript@5.9.3))
+      vue-tsc: 3.3.11(typescript@5.9.3)
+
   mlly@1.8.2:
     dependencies:
       acorn: 8.18.0
@@ -9157,6 +9202,17 @@ snapshots:
       '@vue/compiler-core': 3.5.42
       esbuild: 0.28.2
       vue: 3.5.42(typescript@5.9.3)
+
+  vue-sfc-transformer@0.3.0(@volar/typescript@2.4.28)(@vue/compiler-core@3.5.42)(@vue/language-core@3.3.11)(esbuild@0.28.2)(typescript@5.9.3)(vue@3.5.42(typescript@5.9.3)):
+    dependencies:
+      '@vue/compiler-core': 3.5.42
+      tinyglobby: 0.2.17
+      vue: 3.5.42(typescript@5.9.3)
+    optionalDependencies:
+      '@volar/typescript': 2.4.28
+      '@vue/language-core': 3.3.11
+      esbuild: 0.28.2
+      typescript: 5.9.3
 
   vue-tsc@2.2.12(typescript@5.9.3):
     dependencies:
